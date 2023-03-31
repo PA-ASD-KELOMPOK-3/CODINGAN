@@ -11,7 +11,7 @@ admin ={"User"  :["admin"],
 
 userbiasa={"User"  :["haykal","intan","dinda"],
             "Sandi" :["111","222","123"],
-            "NIM"   :["2209116018", "2209116028", "22091160"]}
+            "NIM"   :["2209116018", "2209116028", "2209116023"]}
 
 #Ini function untuk memberikan delay sejenak 
 def cleardelay():
