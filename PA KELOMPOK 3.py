@@ -170,7 +170,7 @@ def loginadmin():
             while True:
                 os.system("cls")
                 menuadmin()
-                choice = int(input("Input Opsi (1-5): "))
+                choice = int(input("\nInput Opsi (1-5): "))
                 if choice == 1:
                     cleardelay()
                     store.show_product()
