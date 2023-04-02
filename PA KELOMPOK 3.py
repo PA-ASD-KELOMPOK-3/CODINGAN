@@ -177,7 +177,7 @@ def loginadmin():
                     input("Tekan Enter Untuk Lanjut...")
                 elif choice == 2:
                     name = input("Input Nama Produk Baru  : ")
-                    price = int("Input Harga             : ")
+                    price = input("Input Harga             : ")
                     category = input("Input Kategori Produk   : ")
                     flavour = input("Input Jenis Rasa Produk : ")
                     stock = int(input("Input Jumlah Stok       : "))
