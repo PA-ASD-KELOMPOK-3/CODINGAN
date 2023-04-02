@@ -203,7 +203,15 @@ def loginadmin():
                     time.sleep(0.8)
         else :
             print("Invalid Login")
-
+        
+def loginuser():
+    usn = input("Input username anda: ")
+    pasw = getpass.getpass("Input password anda: ")
+    if usn in userbiasa["User"] and pasw in userbiasa["Sandi"]:
+        print("Selamat datang", usn)
+        #cleardelay()
+    else: 
+        print("Username atau Password Salah")
 def menupelanggan():
     print("<><><><><> Welcome To Sweet Bakery <><><><><>")
     print("  <><><><><>   Bakery  Menu   <><><><><>")
