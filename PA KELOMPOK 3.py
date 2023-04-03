@@ -166,7 +166,8 @@ def loginadmin():
         # Validasi username dan password
 
     # Main program
-        if username == "admin" and password == "11233":
+        index = admin["User"].index(username)
+        if username == admin["User"][index] and password == admin["Sandi"][index]:
             while True:
                 os.system("cls")
                 menuadmin()
@@ -207,7 +208,8 @@ def loginadmin():
 def loginuser():
     usn = input("Input username anda: ")
     pasw = getpass.getpass("Input password anda: ")
-    if usn in userbiasa["User"] and pasw in userbiasa["Sandi"]:
+        index = userbiasa["User"].index(usn)
+    if usn == userbiasa["User"][index] and pasw == userbiasa["Sandi"][index]:
         print("Selamat datang", usn)
         #cleardelay()
     else: 
