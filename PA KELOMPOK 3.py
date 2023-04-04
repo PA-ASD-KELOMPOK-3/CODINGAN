@@ -88,6 +88,51 @@ class bakery:
                 elif item[0] == 'remove':
                     table.add_row(['Dihapus', item[1], '-', '-', '-', '-'])
             print(table)
+        
+    def merge_sort(self, head):
+        if head is None or head.next is None:
+            return head
+        mid = self.get_mid(head)
+        left = head
+        right = mid.next
+        mid.next = None
+        left_sorted = self.merge_sort(left)
+        right_sorted = self.merge_sort(right)
+        return self.merge(left_sorted, right_sorted)
+
+    def get_mid(self, head):
+        slow = head
+        fast = head
+        while fast.next is not None and fast.next.next is not None:
+            slow = slow.next
+            fast = fast.next.next
+        return slow
+
+    def merge(self, left, right):
+        if left is None:
+            return right
+        elif right is None:
+            return left
+        elif left.price <= right.price:
+            left.next = self.merge(left.next, right)
+            return left
+        else:
+            right.next = self.merge(left, right.next)
+            return right
+
+    def sort_by_price(self):
+        self.head = self.merge_sort(self.head)
+        
+def tampilkanproduk():
+    b = bakery()
+    b.add_product(shop("Black Forest", "150.000", "Kue Tart", "Cokelat", 5))
+    b.add_product(shop("Cheese Cake", "100.000", "Kue Tart", "Keju", 7))
+    b.add_product(shop("Chiffon Cake", "120.000", "Kue Tart", "Pandan", 4))
+    b.add_product(shop("Sponge Cake", "90.000", "Kue Tart", "Vanilla", 10))
+    b.add_product(shop("Matcha Lava Cake", "190.000", "Kue Tart", "Matcha", 2))
+    b.sort_by_price()
+    b.show_product()
+    input("Tekan Enter Untuk Lanjut...")
 
 #=====SEARCHING DATA====================================================
 def jumpSearch( array , namaproduct , n ):
@@ -157,7 +202,8 @@ def menuadmin():
     print("2. Tambahkan Produk Baru ke dalam List")
     print("3. Hapus Produk Dari List")
     print("4. Tampilkan History")
-    print("5. Exit")
+    print("5. Urutkan Harga")
+    print("6. Exit")
 
 def loginadmin():
     while True :
@@ -171,7 +217,7 @@ def loginadmin():
             while True:
                 os.system("cls")
                 menuadmin()
-                choice = int(input("\nInput Opsi (1-5): "))
+                choice = int(input("\nInput Opsi (1-6): "))
                 if choice == 1:
                     cleardelay()
                     store.show_product()
@@ -198,6 +244,9 @@ def loginadmin():
                     store.show_history()
                     input("Tekan Enter Untuk Lanjut...")
                 elif choice == 5:
+                    tampilkanproduk()
+                    # time.sleep(1)
+                elif choice == 6:
                     raise SystemExit
                 else:
                     print("Pilihan Tidak Sesuai Mohon Coba Lagi")
