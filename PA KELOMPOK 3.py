@@ -123,16 +123,16 @@ class bakery:
     def sort_by_price(self):
         self.head = self.merge_sort(self.head)
         
-def tampilkanproduk():
-    b = bakery()
-    b.add_product(shop("Black Forest", "150.000", "Kue Tart", "Cokelat", 5))
-    b.add_product(shop("Cheese Cake", "100.000", "Kue Tart", "Keju", 7))
-    b.add_product(shop("Chiffon Cake", "120.000", "Kue Tart", "Pandan", 4))
-    b.add_product(shop("Sponge Cake", "90.000", "Kue Tart", "Vanilla", 10))
-    b.add_product(shop("Matcha Lava Cake", "190.000", "Kue Tart", "Matcha", 2))
-    b.sort_by_price()
-    b.show_product()
-    input("Tekan Enter Untuk Lanjut...")
+# def tampilkanproduk():
+#     b = bakery()
+#     b.add_product(shop("Black Forest", "150.000", "Kue Tart", "Cokelat", 5))
+#     b.add_product(shop("Cheese Cake", "100.000", "Kue Tart", "Keju", 7))
+#     b.add_product(shop("Chiffon Cake", "120.000", "Kue Tart", "Pandan", 4))
+#     b.add_product(shop("Sponge Cake", "90.000", "Kue Tart", "Vanilla", 10))
+#     b.add_product(shop("Matcha Lava Cake", "190.000", "Kue Tart", "Matcha", 2))
+#     b.sort_by_price()
+#     b.show_product()
+#     input("Tekan Enter Untuk Lanjut...")
 
 #=====SEARCHING DATA====================================================
 def jumpSearch( array , namaproduct , n ):
@@ -243,9 +243,9 @@ def loginadmin():
                     cleardelay()
                     store.show_history()
                     input("Tekan Enter Untuk Lanjut...")
-                elif choice == 5:
-                    tampilkanproduk()
-                    # time.sleep(1)
+#                 elif choice == 5:
+#                     tampilkanproduk()
+#                     time.sleep(1)
                 elif choice == 6:
                     raise SystemExit
                 else:
