@@ -17,6 +17,9 @@ userbiasa={"User"  :["haykal","intan","dinda"],
 def cleardelay():
     os.system("cls")
     time.sleep(0.8)
+def delayclear():
+    time.sleep(0.8) 
+    os.system("cls")
 
 class shop:
     def __init__(self, name, price, category, flavour, stock):
@@ -89,50 +92,98 @@ class bakery:
                     table.add_row(['Dihapus', item[1], '-', '-', '-', '-'])
             print(table)
         
-    def merge_sort(self, head):
-        if head is None or head.next is None:
-            return head
-        mid = self.get_mid(head)
-        left = head
-        right = mid.next
-        mid.next = None
-        left_sorted = self.merge_sort(left)
-        right_sorted = self.merge_sort(right)
-        return self.merge(left_sorted, right_sorted)
+#MERGE SORT berdasarkan nama
+def merge_sort_nama(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_arr = arr[:mid]
+        right_arr = arr[mid:]
+        merge_sort_nama(left_arr)
+        merge_sort_nama(right_arr)
+        i = j = k = 0
 
-    def get_mid(self, head):
-        slow = head
-        fast = head
-        while fast.next is not None and fast.next.next is not None:
-            slow = slow.next
-            fast = fast.next.next
-        return slow
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i].name < right_arr[j].name:
+                arr[k] = left_arr[i]
+                i += 1
+            else:
+                arr[k] = right_arr[j]
+                j += 1
+            k += 1
 
-    def merge(self, left, right):
-        if left is None:
-            return right
-        elif right is None:
-            return left
-        elif left.price <= right.price:
-            left.next = self.merge(left.next, right)
-            return left
-        else:
-            right.next = self.merge(left, right.next)
-            return right
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
 
-    def sort_by_price(self):
-        self.head = self.merge_sort(self.head)
-        
-# def tampilkanproduk():
-#     b = bakery()
-#     b.add_product(shop("Black Forest", "150.000", "Kue Tart", "Cokelat", 5))
-#     b.add_product(shop("Cheese Cake", "100.000", "Kue Tart", "Keju", 7))
-#     b.add_product(shop("Chiffon Cake", "120.000", "Kue Tart", "Pandan", 4))
-#     b.add_product(shop("Sponge Cake", "90.000", "Kue Tart", "Vanilla", 10))
-#     b.add_product(shop("Matcha Lava Cake", "190.000", "Kue Tart", "Matcha", 2))
-#     b.sort_by_price()
-#     b.show_product()
-#     input("Tekan Enter Untuk Lanjut...")
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            j += 1
+            k += 1
+
+
+def merge_sort_wrapper_nama(store):
+    product_list = []
+    current = store.head
+    while current is not None:
+        product_list.append(current)
+        current = current.next
+
+    merge_sort_nama(product_list)
+
+    store.head = product_list[0]
+    current = store.head
+    for i in range(1, len(product_list)):
+        current.next = product_list[i]
+        current = current.next
+    current.next = None
+
+def merge_sort_harga(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_arr = arr[:mid]
+        right_arr = arr[mid:]
+        merge_sort_harga(left_arr)
+        merge_sort_harga(right_arr)
+        i = j = k = 0
+
+        while i < len(left_arr) and j < len(right_arr):
+            if int(left_arr[i].price) < int(right_arr[j].price):
+                arr[k] = left_arr[i]
+                i += 1
+            else:
+                arr[k] = right_arr[j]
+                j += 1
+            k += 1
+
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
+
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            j += 1
+            k += 1
+
+def merge_sort_wrapper_harga(store):
+    product_list = []
+    current = store.head
+    while current is not None:
+        product_list.append(current)
+        current = current.next
+
+    merge_sort_harga(product_list)
+
+    store.head = product_list[0]
+    current = store.head
+    for i in range(1, len(product_list)):
+        current.next = product_list[i]
+        current = current.next
+    current.next = None
+
+
+
 
 #=====SEARCHING DATA====================================================
 def jumpSearch( array , namaproduct , n ):
@@ -156,17 +207,6 @@ def jumpSearch( array , namaproduct , n ):
      
     return -1
 
-def tampilAnggota(): #Menampilkan Member
-    z = PrettyTable
-    z.clear()
-    z.field_names = ["No","Nama","NIM"]
-    z.reversesort = True
-    for i in range(len(userbiasa["User"])):
-        z.add_row([i+1,userbiasa["User"][i],regisuser["NIM"][i]])
-    z.align["No"] = "l"
-    z.align["Nama"] = "l"
-    z.align["NIM"] = "l"
-
 def ulang(): #Opsi Pengulangan
     if True:
         yt=input("Kembali ke Menu? (y/t): ")
@@ -179,21 +219,15 @@ def ulang(): #Opsi Pengulangan
             ulang()
 
 store = bakery()
+store.add_product(shop("Cheese Cake", 100000, "Kue Tart", "Keju", 7))
+store.add_product(shop("Chiffon Cake", 120000, "Kue Tart", "Pandan", 4))
+store.add_product(shop("Matcha Lava Cake", 190000, "Kue Tart", "Matcha", 2))
+store.add_product(shop("Sponge Cake", 90000, "Kue Tart", "Vanilla", 10))
+store.add_product(shop("Black Forest", 150000, "Kue Tart", "Cokelat", 5))        
 
-def regisuser():
-    while True:
-        regisUser = input("Input User Baru: ")
-        regisPass = getpass.getpass("Input Password baru: ")
-        if regisUser in admin["User"] or regisUser in userbiasa["User"]:
-            print("Maaf Username Dengan Nama Tersebut Sudah Ada")
-        elif any(x.isnumeric() for x in regisUser):
-            print ("Mohon Untuk Memasukan Angka Sebagai Password")
-        elif any(x.isalpha() for x in regisUser) and any(x.isalpha() or x.isnumeric() for x in regisPass):
-            admin["User"].append(regisUser)
-            admin["Sandi"].append(regisPass)
-            break
-        else:
-            print("Tolong Masukan Input Dengan Benar")
+def menu_urut():
+    print("1. Urutkan Berdasarkan Nama")
+    print("2. Urutkan Berdasarkan Harga")
 
 def menuadmin():
     print("<><><><><> Welcome To Sweet Bakery <><><><><>")
@@ -202,8 +236,7 @@ def menuadmin():
     print("2. Tambahkan Produk Baru ke dalam List")
     print("3. Hapus Produk Dari List")
     print("4. Tampilkan History")
-    print("5. Urutkan Harga")
-    print("6. Exit")
+    print("5. Exit")
 
 def loginadmin():
     while True :
@@ -220,11 +253,27 @@ def loginadmin():
                 choice = int(input("\nInput Opsi (1-6): "))
                 if choice == 1:
                     cleardelay()
-                    store.show_product()
-                    input("Tekan Enter Untuk Lanjut...")
+                    menu_urut()
+                    urut = int(input("Pilih Opsi Urut Produk : "))
+                    if urut == 1:
+                        merge_sort_wrapper_nama(store)
+                        cleardelay()
+                        print("Produk telah diurutkan berdasarkan nama")
+                        delayclear()
+                        store.show_product()
+                        input("Tekan Enter Untuk Lanjut...")
+                    elif urut == 2:
+                        merge_sort_wrapper_harga(store)
+                        cleardelay()
+                        print("Produk telah diurutkan berdasarkan harga!")
+                        delayclear()
+                        store.show_product()
+                        input("Tekan Enter Untuk Lanjut...")
+                    else :
+                        print("Invalid!")
                 elif choice == 2:
                     name = input("Input Nama Produk Baru  : ")
-                    price = input("Input Harga             : ")
+                    price = int(input("Input Harga             : "))
                     category = input("Input Kategori Produk   : ")
                     flavour = input("Input Jenis Rasa Produk : ")
                     stock = int(input("Input Jumlah Stok       : "))
@@ -243,26 +292,14 @@ def loginadmin():
                     cleardelay()
                     store.show_history()
                     input("Tekan Enter Untuk Lanjut...")
-#                 elif choice == 5:
-#                     tampilkanproduk()
-#                     time.sleep(1)
-                elif choice == 6:
+                elif choice == 5:
                     raise SystemExit
                 else:
                     print("Pilihan Tidak Sesuai Mohon Coba Lagi")
                     time.sleep(0.8)
         else :
             print("Invalid Login")
-        
-def loginuser():
-    usn = input("Input username anda: ")
-    pasw = getpass.getpass("Input password anda: ")
-        index = userbiasa["User"].index(usn)
-    if usn == userbiasa["User"][index] and pasw == userbiasa["Sandi"][index]:
-        print("Selamat datang", usn)
-        #cleardelay()
-    else: 
-        print("Username atau Password Salah")
+
 def menupelanggan():
     print("<><><><><> Welcome To Sweet Bakery <><><><><>")
     print("  <><><><><>   Bakery  Menu   <><><><><>")
@@ -270,21 +307,89 @@ def menupelanggan():
     print("2. Shopping")
     print("3. Exit")
 
-print(". . . . . .<><><><><>. . . . . .<><><><><>. . . . . .")
-print("1. Login Admin")
-print("2. Login Pelanggan")
-print("3. Registrasi Pelanggan")
-print("4. Exit")
-print(". . . . . .<><><><><>. . . . . .<><><><><>. . . . . .")
-choice = int(input("Input Opsi (1-4): "))
-while True :
-    if choice == 1:
-        loginadmin()
-    elif choice == 2:
-        loginuser()
-    elif choice == 3:
-        regisuser()
-    elif choice == 4 :
-        raise SystemExit
-    else :
-        print("Invalid Login")
+def loginuser():
+    usn = input("Input username anda: ")
+    pasw = getpass.getpass("Input password anda: ")
+    index = userbiasa["User"].index(usn)
+    if usn == userbiasa["User"][index] and pasw == userbiasa["Sandi"][index]:
+        cleardelay()
+        print("Selamat datang", usn)
+        delayclear()
+        while True:
+                os.system("cls")
+                menupelanggan()
+                choice = int(input("\nInput Opsi (1-3): "))
+                if choice == 1:
+                    cleardelay()
+                    menu_urut()
+                    urut = int(input("Pilih Opsi Urut Produk : "))
+                    if urut == 1:
+                        merge_sort_wrapper_nama(store)
+                        cleardelay()
+                        print("Produk telah diurutkan berdasarkan nama")
+                        delayclear()
+                        store.show_product()
+                        input("Tekan Enter Untuk Lanjut...")
+                    elif urut == 2:
+                        merge_sort_wrapper_harga(store)
+                        cleardelay()
+                        print("Produk telah diurutkan berdasarkan harga!")
+                        delayclear()
+                        store.show_product()
+                        input("Tekan Enter Untuk Lanjut...")
+                    else :
+                        print("Invalid!")
+                elif choice == 3:
+                    raise SystemExit
+                else:
+                    print("Pilihan Tidak Sesuai Mohon Coba Lagi")
+                    time.sleep(0.8)
+    else: 
+        print("Username atau Password Salah")
+
+
+def program():
+    while True :
+        print(". . . . . .<><><><><>. . . . . .<><><><><>. . . . . .")
+        print("1. Login Admin")
+        print("2. Login Pelanggan")
+        print("3. Registrasi Pelanggan")
+        print("4. Exit")
+        print(". . . . . .<><><><><>. . . . . .<><><><><>. . . . . .")
+        try : 
+            choice = int(input("Input Opsi (1-4): "))
+            if choice == 1:
+                loginadmin()
+            elif choice == 2:
+                loginuser()
+            elif choice == 3:
+                regisUser = input("Input User Baru: ")
+                regisPass = getpass.getpass("Input Password baru: ")
+                if regisUser in admin["User"] or regisUser in userbiasa["User"]:
+                    print("Maaf Username Dengan Nama Tersebut Sudah Ada")
+                elif any(x.isnumeric() for x in regisUser):
+                    print ("Mohon Untuk Memasukan Angka Sebagai Password")
+                elif any(x.isalpha() for x in regisUser) and any(x.isalpha() or x.isnumeric() for x in regisPass):
+                    admin["User"].append(regisUser)
+                    admin["Sandi"].append(regisPass)
+                    cleardelay()
+                    print ("Berhasil Melakukan Registrasi")
+                    delayclear()
+                else:
+                    print("Tolong Masukan Input Dengan Benar")
+            elif choice == 4 :
+                raise SystemExit
+            elif choice is not True or choice is str:
+                cleardelay()
+                print("Invalid Key1")
+                delayclear()
+        except ValueError :
+            cleardelay()
+            print("Invalid Key2")
+            delayclear()
+        except KeyboardInterrupt :
+            cleardelay()
+            print("Invalid Key3")
+            delayclear()
+
+program()
