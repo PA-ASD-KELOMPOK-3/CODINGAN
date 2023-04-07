@@ -370,8 +370,8 @@ def program():
                 elif any(x.isnumeric() for x in regisUser):
                     print ("Mohon Untuk Memasukan Angka Sebagai Password")
                 elif any(x.isalpha() for x in regisUser) and any(x.isalpha() or x.isnumeric() for x in regisPass):
-                    admin["User"].append(regisUser)
-                    admin["Sandi"].append(regisPass)
+                    userbiasa["User"].append(regisUser)
+                    userbiasa["Sandi"].append(regisPass)
                     cleardelay()
                     print ("Berhasil Melakukan Registrasi")
                     delayclear()
