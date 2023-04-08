@@ -18,8 +18,8 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 
 ## 🍞Features🍞
 Pembeli
-- Registrasi Pembeli
-- Login Pembeli
+- Registrasi Pelanggan
+- Login Pelanggan
 - Show Produk
 - Ambil Antrean
 - Belanja
@@ -34,7 +34,25 @@ Admin
 ## Fungsionalitas
 
 ## 📜Cara Penggunaan
-Pembeli
+
 - Menu Awal
+
 Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilihan yaitu Login Admin, Login Pelanggan, Registrasi Pelanggan, dan Exit.
+![Screenshot 2023-04-08 122704](https://user-images.githubusercontent.com/127454468/230704087-12d68a30-993b-4881-9fe4-2fbb10f9c2f1.png)
+
+🥨User
+- Registrasi Pelanggan
+
+Jika pelanggan belum memiliki akun, maka dapat memilih menu ke-3 untuk registrasi akun. Di menu registrasi, pelanggan akan diminta untuk memasukkan username dan password baru.
+![Screenshot 2023-04-08 130750](https://user-images.githubusercontent.com/127454468/230704393-e4518c9b-779e-49c4-abd1-4a78b46a612c.png)
+Setelah registrasi maka program akan kembali ke menu awal.
+- Login Pelanggan
+
+Di menu ini, pelanggan akan memasukkan username dan password untuk bisa masuk ke dalam program.
+![Screenshot 2023-04-08 131321](https://user-images.githubusercontent.com/127454468/230704501-e8c12b79-8e94-4fbd-b85f-b3e1a1c61419.png)
+
+- Menu Pelanggan
+
+Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri dari 3 pilihan, yaitu Tampilkan Produk Yang Tersedia, Shopping, dan Exit.
+![Screenshot 2023-04-08 123441](https://user-images.githubusercontent.com/127454468/230704761-297cc646-b8d7-4aec-83c2-61e53005682e.png)
 
