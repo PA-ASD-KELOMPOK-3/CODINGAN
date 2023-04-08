@@ -45,8 +45,8 @@ Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilih
 
 Jika pelanggan belum memiliki akun, maka dapat memilih menu ke-3 untuk registrasi akun. Di menu registrasi, pelanggan akan diminta untuk memasukkan username dan password baru.
 ![Screenshot 2023-04-08 130750](https://user-images.githubusercontent.com/127454468/230704393-e4518c9b-779e-49c4-abd1-4a78b46a612c.png)
-Setelah registrasi maka program akan kembali ke menu awal.
-- Login Pelanggan
+Setelah registrasi maka program akan kembali ke menu awal dan pelanggan dapat memasukkan username dan password yang telah didaftarkan di menu login pelanggan.
+-  Login Pelanggan
 
 Di menu ini, pelanggan akan memasukkan username dan password untuk bisa masuk ke dalam program.
 ![Screenshot 2023-04-08 131321](https://user-images.githubusercontent.com/127454468/230704501-e8c12b79-8e94-4fbd-b85f-b3e1a1c61419.png)
@@ -55,4 +55,22 @@ Di menu ini, pelanggan akan memasukkan username dan password untuk bisa masuk ke
 
 Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri dari 3 pilihan, yaitu Tampilkan Produk Yang Tersedia, Shopping, dan Exit.
 ![Screenshot 2023-04-08 123441](https://user-images.githubusercontent.com/127454468/230704761-297cc646-b8d7-4aec-83c2-61e53005682e.png)
+
+- 1.Tampilkan Produk Yang Tersedia
+
+Jika ingin melihat produk maka pelanggan dapat memilih menu pertama, setelah memilih menu, pelanggan dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
+![Screenshot 2023-04-08 122835](https://user-images.githubusercontent.com/127454468/230704986-c4cd74ad-48eb-43c2-8c58-2ae91fc3e804.png)
+
+Jika produk diurutkan berdasarkan nama:
+![Screenshot 2023-04-08 122900](https://user-images.githubusercontent.com/127454468/230705054-d8e8f630-e14f-417e-a94d-e5e81ae300d9.png)
+
+Jika produk diurukan berdasarkan harga:
+![Screenshot 2023-04-08 122915](https://user-images.githubusercontent.com/127454468/230705059-4c53d6c1-4574-4959-a848-eb76acebd930.png)
+
+- 2.Shopping
+
+- 3.Exit
+
+Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu exit
+![Screenshot 2023-04-08 123524](https://user-images.githubusercontent.com/127454468/230704973-666bb43f-2d22-420c-a37e-4413c0afc513.png)
 
