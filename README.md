@@ -31,7 +31,7 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
   - Hapus produk
   - Tampilkan History
 
-## Fungsionalitas
+### Fungsionalitas
 
 ## 📜Cara Penggunaan
 
