@@ -4,6 +4,7 @@ import time
 import getpass
 import math
 import sys
+import json
 os.system("cls")
 
 admin ={"User"  :["admin"],
@@ -91,6 +92,38 @@ class bakery:
                 elif item[0] == 'remove':
                     table.add_row(['Dihapus', item[1], '-', '-', '-', '-'])
             print(table)
+
+    #JUMP SEARCH DESKRIPSI PRODUK
+    def search_product(self, name):
+        if self.head is None:
+            print("Daftar Produk yang Tersedia Sedang Kosong")
+            return
+
+        # mengubah input menjadi huruf kecil
+        name = name.lower()
+
+        # menggunakan jump search untuk mencari produk berdasarkan nama
+        n = len(self.history)
+        step = int(n ** 0.5)
+        prev = 0
+        while prev < n and self.history[prev][1].lower() < name:
+            prev += step
+
+        # linear search untuk menemukan produk
+        for i in range(prev, min(prev + step, n)):
+            if self.history[i][1].lower() == name:
+                # menampilkan deskripsi produk
+                cleardelay()
+                print(40*"=")
+                print("Nama Kue:", self.history[i][1])
+                print("Harga: Rp.", self.history[i][2])
+                print("Kategori:", self.history[i][3])
+                print("Rasa:", self.history[i][4])
+                print("Stok:", self.history[i][5])
+                print(40*"=")
+                return
+
+        print("Produk dengan nama", name, "tidak ditemukan.")
         
 #MERGE SORT berdasarkan nama
 def merge_sort_nama(arr):
@@ -138,6 +171,7 @@ def merge_sort_wrapper_nama(store):
         current = current.next
     current.next = None
 
+#MERGE SORT berdasarkan harga
 def merge_sort_harga(arr):
     if len(arr) > 1:
         mid = len(arr) // 2
@@ -183,30 +217,6 @@ def merge_sort_wrapper_harga(store):
     current.next = None
 
 
-
-
-#=====SEARCHING DATA====================================================
-def jumpSearch( array , namaproduct , n ):
-    x = namaproduct
-    step = math.sqrt(n)
-    prev = 0
-    
-    while array[int(min(step, n)-1)]["Nama Produk"].lower() < x.lower():
-        prev = step
-        step += math.sqrt(n)
-        if prev >= n:
-            return -1
-
-    while array[int(prev)]["Nama Produk"].lower() < x.lower():
-        prev += 1
-        if prev == min(step, n):
-            return -1
-
-    if array[int(prev)]["Nama Produk"].lower() == x.lower(): 
-        return prev
-     
-    return -1
-
 def ulang(): #Opsi Pengulangan
     if True:
         yt=input("Kembali ke Menu? (y/t): ")
@@ -228,6 +238,7 @@ store.add_product(shop("Black Forest", 150000, "Kue Tart", "Cokelat", 5))
 def menu_urut():
     print("1. Urutkan Berdasarkan Nama")
     print("2. Urutkan Berdasarkan Harga")
+    print("3. Cari Kue")
 
 def menuadmin():
     print("<><><><><> Welcome To Sweet Bakery <><><><><>")
@@ -268,6 +279,10 @@ def loginadmin():
                         print("Produk telah diurutkan berdasarkan harga!")
                         delayclear()
                         store.show_product()
+                        input("Tekan Enter Untuk Lanjut...")
+                    elif urut == 3:
+                        cari = input("Masukan Nama Kue Yang Ingin Dicari : ")
+                        store.search_product(cari)
                         input("Tekan Enter Untuk Lanjut...")
                     else :
                         print("Invalid!")
@@ -336,6 +351,10 @@ def loginuser():
                         print("Produk telah diurutkan berdasarkan harga!")
                         delayclear()
                         store.show_product()
+                        input("Tekan Enter Untuk Lanjut...")
+                    elif urut == 3:
+                        cari = input("Masukan Nama Kue Yang Ingin Dicari : ")
+                        store.search_product(cari)
                         input("Tekan Enter Untuk Lanjut...")
                     else :
                         print("Invalid!")
