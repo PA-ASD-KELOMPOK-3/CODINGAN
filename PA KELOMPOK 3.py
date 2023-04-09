@@ -94,36 +94,41 @@ class bakery:
             print(table)
 
     #JUMP SEARCH DESKRIPSI PRODUK
-    def search_product(self, name):
+    def jump_search(self, name):
         if self.head is None:
-            print("Daftar Produk yang Tersedia Sedang Kosong")
-            return
+            return None
+        
+        # hitung ukuran step yang akan digunakan
+        n = 0
+        current = self.head
+        while current is not None:
+            n += 1
+            current = current.next
+        step = int(math.sqrt(n))
+        
+        # lakukan jump search
+        prev = None
+        current = self.head
+        while current is not None and current.name.lower() < name.lower():
+            prev = current
+            for i in range(step):
+                current = current.next
+                if current is None:
+                    break
+        
+        # jika nama produk ditemukan, tampilkan deskripsinya
+        if current is not None and current.name.lower() == name.lower():
+            cleardelay()
+            print(40*"=")
+            print("Nama Kue: ", current.name)
+            print("Harga: ", current.price)
+            print("Kategori: ", current.category)
+            print("Rasa: ", current.flavour)
+            print("Stok: ", current.stock)
+            print(40*"=")
+        else:
+            print("Produk tidak ditemukan.")
 
-        # mengubah input menjadi huruf kecil
-        name = name.lower()
-
-        # menggunakan jump search untuk mencari produk berdasarkan nama
-        n = len(self.history)
-        step = int(n ** 0.5)
-        prev = 0
-        while prev < n and self.history[prev][1].lower() < name:
-            prev += step
-
-        # linear search untuk menemukan produk
-        for i in range(prev, min(prev + step, n)):
-            if self.history[i][1].lower() == name:
-                # menampilkan deskripsi produk
-                cleardelay()
-                print(40*"=")
-                print("Nama Kue:", self.history[i][1])
-                print("Harga: Rp.", self.history[i][2])
-                print("Kategori:", self.history[i][3])
-                print("Rasa:", self.history[i][4])
-                print("Stok:", self.history[i][5])
-                print(40*"=")
-                return
-
-        print("Produk dengan nama", name, "tidak ditemukan.")
         
 #MERGE SORT berdasarkan nama
 def merge_sort_nama(arr):
@@ -259,7 +264,8 @@ def loginadmin():
         index = admin["User"].index(username)
         if username == admin["User"][index] and password == admin["Sandi"][index]:
             while True:
-                os.system("cls")
+                cleardelay()
+                print("<=><=><=><=> WELCOME ADMIN ^--^ <=><=><=><=>")
                 menuadmin()
                 choice = int(input("\nInput Opsi (1-6): "))
                 if choice == 1:
@@ -282,7 +288,7 @@ def loginadmin():
                         input("Tekan Enter Untuk Lanjut...")
                     elif urut == 3:
                         cari = input("Masukan Nama Kue Yang Ingin Dicari : ")
-                        store.search_product(cari)
+                        store.jump_search(cari)
                         input("Tekan Enter Untuk Lanjut...")
                     else :
                         print("Invalid!")
@@ -328,7 +334,7 @@ def loginuser():
     index = userbiasa["User"].index(usn)
     if usn == userbiasa["User"][index] and pasw == userbiasa["Sandi"][index]:
         cleardelay()
-        print("Selamat datang", usn)
+        print("<=><=><=><=> Selamat datang",usn,"<=><=><=><=>")
         delayclear()
         while True:
                 os.system("cls")
@@ -354,7 +360,7 @@ def loginuser():
                         input("Tekan Enter Untuk Lanjut...")
                     elif urut == 3:
                         cari = input("Masukan Nama Kue Yang Ingin Dicari : ")
-                        store.search_product(cari)
+                        store.jump_search(cari)
                         input("Tekan Enter Untuk Lanjut...")
                     else :
                         print("Invalid!")
