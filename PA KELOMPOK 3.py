@@ -92,6 +92,16 @@ class bakery:
                 elif item[0] == 'remove':
                     table.add_row(['Dihapus', item[1], '-', '-', '-', '-'])
             print(table)
+        
+    def append(self, val):
+        new_node = Node(val)
+        if not self.head:
+            self.head = new_node
+            return
+        curr_node = self.head
+        while curr_node.next:
+            curr_node = curr_node.next
+        curr_node.next = new_node
 
     #JUMP SEARCH DESKRIPSI PRODUK
     def jump_search(self, name):
@@ -363,6 +373,11 @@ def loginuser():
                         input("Tekan Enter Untuk Lanjut...")
                     else :
                         print("Invalid!")
+                elif choice == 2:
+                    store.show_product()
+                    buy = input("Masukkan nama kue yang ingin dibeli: ")
+                    store.append(buy)              
+                    input("Tekan Enter Untuk Lanjut...") #belum input banyak yang mau dibeli
                 elif choice == 3:
                     raise SystemExit
                 else:
