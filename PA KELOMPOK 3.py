@@ -120,12 +120,11 @@ class bakery:
         if current is not None and current.name.lower() == name.lower():
             cleardelay()
             print(40*"=")
-            print("Nama Kue: ", current.name)
-            print("Harga: ", current.price)
-            print("Kategori: ", current.category)
-            print("Rasa: ", current.flavour)
-            print("Stok: ", current.stock)
-            print(40*"=")
+            print("Nama Kue : ", current.name)
+            print("Harga    : ", current.price)
+            print("Kategori : ", current.category)
+            print("Rasa     : ", current.flavour)
+            print("Stok     : ", current.stock)
         else:
             print("Produk tidak ditemukan.")
 
@@ -392,7 +391,7 @@ def program():
                 regisPass = getpass.getpass("Input Password baru: ")
                 if regisUser in admin["User"] or regisUser in userbiasa["User"]:
                     print("Maaf Username Dengan Nama Tersebut Sudah Ada")
-                elif any(x.isnumeric() for x in regisUser):
+                elif any(x.isalpha() for x in regisUser):
                     print ("Mohon Untuk Memasukan Angka Sebagai Password")
                 elif any(x.isalpha() for x in regisUser) and any(x.isalpha() or x.isnumeric() for x in regisPass):
                     userbiasa["User"].append(regisUser)
