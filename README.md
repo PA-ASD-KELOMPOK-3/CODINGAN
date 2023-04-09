@@ -65,11 +65,11 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 ![Screenshot 2023-04-08 122835](https://user-images.githubusercontent.com/127454468/230704986-c4cd74ad-48eb-43c2-8c58-2ae91fc3e804.png)
 
   - Jika produk diurutkan berdasarkan nama:
-  - 
+
 ![Screenshot 2023-04-08 122900](https://user-images.githubusercontent.com/127454468/230705054-d8e8f630-e14f-417e-a94d-e5e81ae300d9.png)
 
   - Jika produk diurukan berdasarkan harga:
-  - 
+
 ![Screenshot 2023-04-08 122915](https://user-images.githubusercontent.com/127454468/230705059-4c53d6c1-4574-4959-a848-eb76acebd930.png)
 
 - 2.Shopping
