@@ -11,8 +11,7 @@ admin ={"User"  :["admin"],
         "Sandi" :["admin123"]}
 
 userbiasa={"User"  :["haykal","intan","dinda"],
-            "Sandi" :["111","222","123"],
-            "NIM"   :["2209116018", "2209116028", "2209116023"]}
+            "Sandi" :["111","222","123"]}
 
 #Ini function untuk memberikan delay sejenak 
 def cleardelay():
@@ -51,18 +50,55 @@ class bakery:
     #function menghapus Produk
     def remove_product(self, name):
         if self.head is None:
+            print("Produk Tidak Ditemukan")
             return
         elif self.head.name == name:
             self.head = self.head.next
             self.history.append(('remove', name))
+            print("Produk Telah Berhasil Dihapus")
             return
         current = self.head
         while current.next is not None:
             if current.next.name == name:
                 current.next = current.next.next
                 self.history.append(('remove', name))
+                print("Produk Telah Berhasil Dihapus")
                 return
             current = current.next
+            print("Produk Tidak Ditemukan")
+            break
+    #Function mengubah produk
+    def edit_product(self, name):
+        if self.head is None:
+            print("Produk Tidak Ditemukan")
+            return
+        current = self.head
+        while current is not None:
+            if current.name.lower() == name.lower():
+                print("Produk yang akan diubah:", current.name)
+                field_name = input("Masukkan Jenis yang ingin diubah (harga/stok): ")
+                new_value = int(input("Masukkan Data Baru: "))
+                if field_name == "harga" : 
+                    if len(new_value) > 1000000:
+                        print("Inputan Harga Tidak Boleh Lebih dari 1 Juta dan Tidak boleh kosong")
+                    else :
+                        current.price = new_value
+                if field_name == "stok" :
+                    if len(new_value) > 100 or len(new_value) <=0 :
+                        print("Inputan Stok Tidak Boleh Lebih dari 100 dan Tidak boleh kosong")
+                    else :    
+                        current.stock = new_value
+                    
+                print("Jenis yang dimasukan tidak sesuai")
+                return
+                self.history.append(('edit', name, field_name, new_value))
+                cleardelay()
+                print(40*"=")
+                print("      Produk berhasil diubah")
+                print(40*"=")
+                return
+            current = current.next
+        print("Produk Tidak Ditemukan")
 
     #function menampilkan Produk
     def show_product(self):
@@ -150,7 +186,7 @@ def merge_sort_nama(arr):
         i = j = k = 0
 
         while i < len(left_arr) and j < len(right_arr):
-            if left_arr[i].name < right_arr[j].name:
+            if left_arr[i].name.lower() < right_arr[j].name.lower():
                 arr[k] = left_arr[i]
                 i += 1
             else:
@@ -167,6 +203,7 @@ def merge_sort_nama(arr):
             arr[k] = right_arr[j]
             j += 1
             k += 1
+
 
 
 def merge_sort_wrapper_nama(store):
@@ -260,8 +297,9 @@ def menuadmin():
     print("1. Tampilkan Produk Yang Tersedia")
     print("2. Tambahkan Produk Baru ke dalam List")
     print("3. Hapus Produk Dari List")
-    print("4. Tampilkan History")
-    print("5. Exit")
+    print("4. Update Produk")
+    print("5. Tampilkan History")
+    print("6. Exit")
 
 def loginadmin():
     while True :
@@ -314,15 +352,21 @@ def loginadmin():
                     input("Tekan Enter Untuk Lanjut...")
                 elif choice == 3:
                     name = input("Masukan Nama Produk yang Ingin Dihapus : ")
-                    store.remove_product(name)
                     cleardelay()
-                    print("Produk Telah Berhasil Dihapus")
+                    store.remove_product(name)
                     input("Tekan Enter Untuk Lanjut...")
                 elif choice == 4:
                     cleardelay()
-                    store.show_history()
+                    store.show_product()
+                    upd = input("Masukan Nama Produk yang Ingin Diubah : ")
+                    cleardelay()
+                    store.edit_product(upd)
                     input("Tekan Enter Untuk Lanjut...")
                 elif choice == 5:
+                    cleardelay()
+                    store.show_history()
+                    input("Tekan Enter Untuk Lanjut...")
+                elif choice == 6:
                     raise SystemExit
                 else:
                     print("Pilihan Tidak Sesuai Mohon Coba Lagi")
@@ -379,7 +423,7 @@ def loginuser():
                     store.append(buy)              
                     input("Tekan Enter Untuk Lanjut...") #belum input banyak yang mau dibeli
                 elif choice == 3:
-                    raise SystemExit
+                    return
                 else:
                     print("Pilihan Tidak Sesuai Mohon Coba Lagi")
                     time.sleep(0.8)
