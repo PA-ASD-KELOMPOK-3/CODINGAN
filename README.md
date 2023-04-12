@@ -38,6 +38,7 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 - Menu Awal
 
 Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilihan yaitu Login Admin, Login Pelanggan, Registrasi Pelanggan, dan Exit.
+
 ![Screenshot 2023-04-08 122704](https://user-images.githubusercontent.com/127454468/230704087-12d68a30-993b-4881-9fe4-2fbb10f9c2f1.png)
 
 ### 🥨**User**🥨
@@ -63,13 +64,13 @@ Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri d
 Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, setelah memilih menu, pelanggan dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
 
 ![Screenshot 2023-04-08 122835](https://user-images.githubusercontent.com/127454468/230704986-c4cd74ad-48eb-43c2-8c58-2ae91fc3e804.png)
-
-  - Jika produk diurutkan berdasarkan nama:
-
+```
+  - Jika produk diurutkan berdasarkan nama
+```
 ![Screenshot 2023-04-08 122900](https://user-images.githubusercontent.com/127454468/230705054-d8e8f630-e14f-417e-a94d-e5e81ae300d9.png)
-
-  - Jika produk diurukan berdasarkan harga:
-
+```
+  - Jika produk diurukan berdasarkan harga
+```
 ![Screenshot 2023-04-08 122915](https://user-images.githubusercontent.com/127454468/230705059-4c53d6c1-4574-4959-a848-eb76acebd930.png)
 
 - 2.Shopping
@@ -99,12 +100,12 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 
 ![Screenshot 2023-04-08 122835](https://user-images.githubusercontent.com/127454468/230704986-c4cd74ad-48eb-43c2-8c58-2ae91fc3e804.png)
 
-  - Jika produk diurutkan berdasarkan nama:
+  - Jika produk diurutkan berdasarkan nama
   
 ![Screenshot 2023-04-08 122900](https://user-images.githubusercontent.com/127454468/230705054-d8e8f630-e14f-417e-a94d-e5e81ae300d9.png)
-
-  - Jika produk diurukan berdasarkan harga:
-  
+```
+  - Jika produk diurukan berdasarkan harga
+```
 ![Screenshot 2023-04-08 122915](https://user-images.githubusercontent.com/127454468/230705059-4c53d6c1-4574-4959-a848-eb76acebd930.png)
 
 2. Tambahkan Produk Baru ke dalam List
@@ -112,13 +113,13 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 Untuk menambahkan produk baru maka admin dapat memilih `menu admin ke-2`, setelah memilih menu, admin akan diminta untuk menginput Nama Produk, Harga, Kategori Produk, Jenis Rasa Produk, dan Jumlah Stok.
 
 ![Screenshot 2023-04-08 123029](https://user-images.githubusercontent.com/127454468/230756320-f933a6eb-08e6-4578-aad4-cfef95034df2.png)
-
+```
 Tampilan jika produk berhasil ditambahkan
-
+```
 ![Screenshot 2023-04-08 123045](https://user-images.githubusercontent.com/127454468/230756335-4a49ad8c-2773-4c5f-858f-8a89c2598aed.png)
-
+```
 Produk baru otomatis akan di urutkan di dalam list produk
-
+```
 ![Screenshot 2023-04-08 123218](https://user-images.githubusercontent.com/127454468/230756360-a5f2e1f8-2103-4a06-95da-182b8a1d752e.png)
 
 3. Hapus Produk Dari List
@@ -126,9 +127,9 @@ Produk baru otomatis akan di urutkan di dalam list produk
 Untuk menghapus produk yang telah ada maka admin dapat memilih `menu admin ke-3`, setelah memilih menu, admin akan diminta untuk menginput nama produk yang ingin dihapus.
 
 ![Screenshot 2023-04-08 123100](https://user-images.githubusercontent.com/127454468/230756343-9015edb0-8e28-4275-ae50-13058b31a90b.png)
-
+```
 Tampilan jika produk berhasil dihapus
-
+```
 ![Screenshot 2023-04-08 123114](https://user-images.githubusercontent.com/127454468/230756353-8fdfef9c-4417-4451-bee6-4b3a2a0518ab.png)
 
 4. Tampilkan History
