@@ -5,6 +5,7 @@ import getpass
 import math
 import sys
 import json
+import datetime
 os.system("cls")
 
 admin ={"User"  :["admin"],
@@ -35,6 +36,7 @@ class bakery:
         self.head = None
         #history sama dengan list kosong yang nantinya akan terisi
         self.history = []
+        self.transactions = []
 
     #function menambah produk
     def add_product(self, cake):
@@ -67,6 +69,7 @@ class bakery:
             current = current.next
             print("Produk Tidak Ditemukan")
             break
+                
     #Function mengubah produk
     def edit_product(self, name):
         if self.head is None:
@@ -129,15 +132,16 @@ class bakery:
                     table.add_row(['Dihapus', item[1], '-', '-', '-', '-'])
             print(table)
         
-    def append(self, val):
-        new_node = Node(val)
-        if not self.head:
-            self.head = new_node
-            return
-        curr_node = self.head
-        while curr_node.next:
-            curr_node = curr_node.next
-        curr_node.next = new_node
+    def add_transaction(self, name, price): 
+        now = datetime.datetime.now()
+        transaction = {
+            'name': name,
+            'harga': price,
+            # 'jumlah': jumlah_beli,
+            # 'total' : total_harga,
+            'date': now.strftime("%Y-%m-%d %H:%M:%S")
+        }
+        self.transactions.append(transaction)
 
     #JUMP SEARCH DESKRIPSI PRODUK
     def jump_search(self, name):
@@ -419,9 +423,66 @@ def loginuser():
                         print("Invalid!")
                 elif choice == 2:
                     store.show_product()
-                    buy = input("Masukkan nama kue yang ingin dibeli: ")
-                    store.append(buy)              
-                    input("Tekan Enter Untuk Lanjut...") #belum input banyak yang mau dibeli
+                    nama_kue = input("Masukkan Nama Kue         : ")
+                    jumlah_beli = int(input("Masukkan Jumlah Pembelian : "))
+                    cleardelay()
+                    current = None
+                    product_found = False
+                    node = store.head
+                    while node is not None:
+                        if node.name == nama_kue:
+                            current = node
+                            product_found = True
+                            break
+                        node = node.next
+                    if not product_found:
+                        print(">> Kue Tidak Ditemukan <<\n\n")
+                        input("Tekan Enter Untuk Lanjut...")
+                    else:
+                        if jumlah_beli > current.stock:
+                            print(">> Maaf, stok kue tidak mencukupi <<\n\n")
+                            input("Tekan Enter Untuk Lanjut...")
+                        else:
+                            total_harga = current.price * jumlah_beli
+                            print("RINCIAN BELANJAAN".center(30)) #kalau bisa masukin pretty table aja
+                            transaction = {"name": current.name,
+                                        "price": current.price,
+                                        "quantity": jumlah_beli,
+                                        "total_price": total_harga,
+                                        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
+                            print("Nama         : {}\nHarga Satuan : {} \nJumlah       : {} \nTotal Harga  : {} \nTanggal      : {}".format(
+                                current.name, current.price, jumlah_beli, total_harga, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
+                            store.add_transaction(current.name, total_harga)
+                            input("\n\nTekan Enter Untuk Lanjut...")
+                            cleardelay()
+                            tanya = input("Lanjutkan Pembayaran? [y/t]: ")
+                            cleardelay()
+                            if tanya == "y":
+                                print("Membuat Struk Belanja..")
+                                harganya = current.price
+                                tanggal = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
+                                with open("transaction.txt", "a") as invoice:
+                                    print("="*50, file=invoice)
+                                    print(" STRUK BELANJA ".center(50,*"="), file=invoice)
+                                    print("="*50, file=invoice)
+                                    print(f"Nama Pelanggan: {usn}", file=invoice)
+                                    print(f"Tanggal       : {tanggal}\n", file=invoice)
+                                    print(f"   Nama Kue         : {nama_kue}", file=invoice)
+                                    print(f"   Jumlah           : {jumlah_beli}", file=invoice)
+                                    print(f"   Harga Satuan Kue : {harganya}", file=invoice)
+                                    print(f"   Total Harga      : {total_harga}", file=invoice)
+                                    print(f"   Tanggal          : {tanggal}\n", file=invoice) 
+                                    print("="*50, file=invoice) 
+                                    print(" TERIMA KASIH ".center(50,"="), file=invoice)
+                                    print("="*50, "\n\n", file=invoice)
+                                    delayclear()
+                                    print(">> Transaksi berhasil")
+                                    print("Terima kasih Berbelanja Di Toko Kami!\n\n")
+                                    input("Tekan Enter Untuk Lanjut...")
+                                    
+                            elif tanya == "t":
+                                print("Terima Kasih Sudah Berkunjung!\n\n")
+                                input("Tekan Enter Untuk Lanjut...")
                 elif choice == 3:
                     return
                 else:
