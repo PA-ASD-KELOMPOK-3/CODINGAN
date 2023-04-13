@@ -27,10 +27,33 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 [datetime](https://docs.python.org/3/library/datetime.html)
 
 ### Dict
+- admin
+- user biasa
 
 ### Linked List
+- shop
+- bakery
 
-### Fungsi
+**Fungsi dalam class bakery:**
+
+add product,
+remove product,
+edit product,
+show product,
+show history,
+add transaction,
+search,
+sort,
+ulang
+
+### - Fungsi
+- def cleardelay
+- def menu urut
+- def menu admin
+- def login admin
+- def menu pelanggan
+- def login user
+- def program
 
 ## 🍞Features🍞
 - Pembeli
