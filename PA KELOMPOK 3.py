@@ -52,22 +52,22 @@ class bakery:
     #function menghapus Produk
     def remove_product(self, name):
         if self.head is None:
-            print("Produk Tidak Ditemukan")
+            print("Produk Tidak Ditemukan\n\n")
             return
         elif self.head.name == name:
             self.head = self.head.next
             self.history.append(('remove', name))
-            print("Produk Telah Berhasil Dihapus")
+            print("Produk Telah Berhasil Dihapus\n\n")
             return
         current = self.head
         while current.next is not None:
             if current.next.name == name:
                 current.next = current.next.next
                 self.history.append(('remove', name))
-                print("Produk Telah Berhasil Dihapus")
+                print("Produk Telah Berhasil Dihapus\n\n")
                 return
             current = current.next
-            print("Produk Tidak Ditemukan")
+            print("Produk Tidak Ditemukan\n\n")
             break
                 
     #Function mengubah produk
@@ -82,27 +82,27 @@ class bakery:
                 field_name = input("Masukkan Jenis yang ingin diubah (harga/stok): ")
                 new_value = int(input("Masukkan Data Baru: "))
                 if field_name == "harga" : 
-                    if len(new_value) > 1000000:
+                    if new_value > 1000000:
                         print("Inputan Harga Tidak Boleh Lebih dari 1 Juta dan Tidak boleh kosong")
                     else :
                         current.price = new_value
-                if field_name == "stok" :
-                    if len(new_value) > 100 or len(new_value) <=0 :
+                elif field_name == "stok" :
+                    if new_value > 100 or new_value <= 0:
                         print("Inputan Stok Tidak Boleh Lebih dari 100 dan Tidak boleh kosong")
                     else :    
                         current.stock = new_value
-                    
-                print("Jenis yang dimasukan tidak sesuai")
-                return
-                self.history.append(('edit', name, field_name, new_value))
+                else:  
+                    print("Jenis yang dimasukan tidak sesuai")
                 cleardelay()
                 print(40*"=")
                 print("      Produk berhasil diubah")
                 print(40*"=")
                 return
-            current = current.next
-        print("Produk Tidak Ditemukan")
-
+            else: 
+                current = current.next
+                print("Produk Tidak Ditemukan")
+                break
+                    
     #function menampilkan Produk
     def show_product(self):
         table = PrettyTable()
@@ -130,6 +130,8 @@ class bakery:
                     table.add_row(['Ditambahkan', item[1], item[2], item[3], item[4], item[5]])
                 elif item[0] == 'remove':
                     table.add_row(['Dihapus', item[1], '-', '-', '-', '-'])
+                elif item[0] == 'edit':
+                    table.add_row(['Diubah', item[1], item[3] if item[2] == 'harga' else '-', '-', '-', item[3] if item[2] == 'stok' else '-'])
             print(table)
         
     def add_transaction(self, name, price): 
@@ -174,7 +176,7 @@ class bakery:
             print("Harga    : ", current.price)
             print("Kategori : ", current.category)
             print("Rasa     : ", current.flavour)
-            print("Stok     : ", current.stock)
+            print("Stok     : \n\n", current.stock)
         else:
             print("Produk tidak ditemukan.")
 
@@ -444,7 +446,7 @@ def loginuser():
                             input("Tekan Enter Untuk Lanjut...")
                         else:
                             total_harga = current.price * jumlah_beli
-                            print("RINCIAN BELANJAAN".center(30)) #kalau bisa masukin pretty table aja
+                            print("RINCIAN BELANJAAN".center(30))
                             transaction = {"name": current.name,
                                         "price": current.price,
                                         "quantity": jumlah_beli,
