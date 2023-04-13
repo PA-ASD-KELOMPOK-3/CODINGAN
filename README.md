@@ -16,6 +16,10 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 
 ## ⚙️Structure
 
+### Library
+[PrettyTable](https://pypi.org/project/prettytable/)
+
+
 ## 🍞Features🍞
 - Pembeli
   - Registrasi Pelanggan
@@ -42,14 +46,14 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 
 ## 📜Cara Penggunaan
 
-- Menu Awal
+#### Menu Awal
 
 Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilihan yaitu Login Admin, Login Pelanggan, Registrasi Pelanggan, dan Exit.
 
 ![Screenshot 2023-04-08 122704](https://user-images.githubusercontent.com/127454468/230704087-12d68a30-993b-4881-9fe4-2fbb10f9c2f1.png)
 
 ### 🥨**User**🥨
-- Registrasi Pelanggan
+##### Registrasi Pelanggan
 
 Jika pelanggan belum memiliki akun, maka dapat memilih menu awal `opsi ke-3` untuk registrasi akun. Di menu registrasi, pelanggan akan diminta untuk memasukkan username dan password baru.
 ![Screenshot 2023-04-08 130750](https://user-images.githubusercontent.com/127454468/230704393-e4518c9b-779e-49c4-abd1-4a78b46a612c.png)
