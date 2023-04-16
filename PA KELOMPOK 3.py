@@ -3,16 +3,21 @@ import os
 import time
 import getpass
 import math
-import sys
-import json
 import datetime
+from pymongo import MongoClient
+from bson.objectid import ObjectId
 os.system("cls")
+
+cluster = MongoClient("mongodb+srv://haykal:haykal45@pa-asd.hshando.mongodb.net/test")
+
+database = cluster["PA_ASD_KEL3"]
+barang = database["data_barang"]
+pelanggan = database["akun_pembeli"]
+history = database["history"]
+transaksi = database["transaksi"]
 
 admin ={"User"  :["admin"],
         "Sandi" :["admin123"]}
-
-userbiasa={"User"  :["haykal","intan","dinda"],
-            "Sandi" :["111","222","123"]}
 
 #Ini function untuk memberikan delay sejenak 
 def cleardelay():
@@ -30,6 +35,15 @@ class shop:
         self.flavour = flavour
         self.stock = stock
         self.next = None
+    def to_dict(self):
+        return {
+            "name": self.name,
+            "price": self.price,
+            "category": self.category,
+            "flavour": self.flavour,
+            "stock": self.stock,
+            "timestamp": datetime.datetime.now()
+        }
 
 class bakery:
     def __init__(self):
@@ -40,146 +54,214 @@ class bakery:
 
     #function menambah produk
     def add_product(self, cake):
-        if self.head is None:
-            self.head = cake
-        else:
-            current = self.head
-            while current.next is not None:
-                current = current.next
-            current.next = cake
-        self.history.append(('add', cake.name, cake.price, cake.category, cake.flavour, cake.stock))
+        barang.insert_one(cake.to_dict())
+        result = barang.find_one({"name": cake.name})
+        history_data = {
+            "action": "add",
+            "name": result["name"],
+            "price": result["price"],
+            "category": result["category"],
+            "flavour": result["flavour"],
+            "stock": result["stock"],
+            "timestamp": datetime.datetime.now()
+        }
+        history.insert_one(history_data)
+        print("Produk berhasil ditambahkan\n\n")
 
-    #function menghapus Produk
     def remove_product(self, name):
-        if self.head is None:
-            print("Produk Tidak Ditemukan\n\n")
-            return
-        elif self.head.name == name:
-            self.head = self.head.next
-            self.history.append(('remove', name))
-            print("Produk Telah Berhasil Dihapus\n\n")
-            return
-        current = self.head
-        while current.next is not None:
-            if current.next.name == name:
-                current.next = current.next.next
-                self.history.append(('remove', name))
-                print("Produk Telah Berhasil Dihapus\n\n")
-                return
-            current = current.next
-            print("Produk Tidak Ditemukan\n\n")
-            break
-                
-    #Function mengubah produk
+        result = barang.delete_one({"name": name})
+        if result.deleted_count == 1:
+            history_data = {
+                "action": "remove",
+                "name": name,
+                "price": "-",
+                "category": "-",
+                "flavour": "-",
+                "stock": "-",
+                "timestamp": datetime.datetime.now()
+            }
+            history.insert_one(history_data)
+            print("Produk berhasil dihapus\n\n")
+        else:
+            print("Produk tidak ditemukan\n\n")
+
     def edit_product(self, name):
-        if self.head is None:
-            print("Produk Tidak Ditemukan")
-            return
-        current = self.head
-        while current is not None:
-            if current.name.lower() == name.lower():
-                print("Produk yang akan diubah:", current.name)
-                field_name = input("Masukkan Jenis yang ingin diubah (harga/stok): ")
-                new_value = int(input("Masukkan Data Baru: "))
-                if field_name == "harga" : 
-                    if new_value > 1000000:
-                        print("Inputan Harga Tidak Boleh Lebih dari 1 Juta dan Tidak boleh kosong")
-                    else :
-                        current.price = new_value
-                elif field_name == "stok" :
-                    if new_value > 100 or new_value <= 0:
-                        print("Inputan Stok Tidak Boleh Lebih dari 100 dan Tidak boleh kosong")
-                    else :    
-                        current.stock = new_value
-                else:  
-                    print("Jenis yang dimasukan tidak sesuai")
-                cleardelay()
-                print(40*"=")
-                print("      Produk berhasil diubah")
-                print(40*"=")
-                return
-            else: 
-                current = current.next
-                print("Produk Tidak Ditemukan")
-                break
+        result = barang.find_one({"name": name})
+        if result is not None:
+            print("Produk yang akan diubah:", result["name"])
+            field_name = input("Masukkan jenis yang ingin diubah (harga/stok): ")
+            new_value = int(input("Masukkan data baru: "))
+            if field_name == "harga":
+                if new_value > 1000000 or new_value <= 0:
+                    print("Inputan harga tidak boleh lebih dari 1 juta dan tidak boleh kosong")
+                else:
+                    result["price"] = new_value
+                    barang.replace_one({"name": name}, result)
+                    history_data = {
+                        "action": "edit",
+                        "name": name,
+                        "field_name": "harga",
+                        "new_value": new_value,
+                        "timestamp": datetime.datetime.now()
+                    }
+                    history.insert_one(history_data)
+                    print(40*"=")
+                    print("      Produk berhasil diubah")
+                    print(40*"=")
+            elif field_name == "stok":
+                if new_value > 100 or new_value <= 0:
+                    print("Inputan stok tidak boleh lebih dari 100 dan tidak boleh kosong")
+                else:
+                    result["stock"] = new_value
+                    barang.replace_one({"name": name}, result)
+                    history_data = {
+                        "action": "edit",
+                        "name": name,
+                        "field_name": "stok",
+                        "new_value": new_value,
+                        "timestamp": datetime.datetime.now()
+                    }
+                    history.insert_one(history_data)
+                    print(40*"=")
+                    print("      Produk berhasil diubah")
+                    print(40*"=")
+            else:
+                print("Jenis yang dimasukkan tidak sesuai")
+        else:
+            print("Produk tidak ditemukan\n\n")
                     
     #function menampilkan Produk
     def show_product(self):
         table = PrettyTable()
-        table.title = "Produk Yang Tersedia"
+        table.title = "Produk yang Tersedia"
         table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
-        if self.head is None:
-            print("Daftar Produk yang Tersedia Sedang Kosong")
-        else:
-            current = self.head
-            while current is not None:
-                table.add_row([current.name, current.price, current.category, current.flavour, current.stock])
-                current = current.next
-            print(table)
+        for result in barang.find():
+            table.add_row([result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
+        print(table)
 
     #function menampilkan history
     def show_history(self):
         table = PrettyTable()
         table.title = "History"
         table.field_names = ["Keterangan", "Nama Produk", "Harga", "Kategori", "Rasa", "Stok"]
-        if self.head is None:
-            print("         History Masih Kosong           ")
+        for result in history.find():
+            if result["action"] == "add":
+                table.add_row(["Produk ditambahkan", result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
+            elif result["action"] == "remove":
+                table.add_row(["Produk dihapus", result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
+            elif result["action"] == "edit":
+                table.add_row(["Produk diubah (" + result["field_name"] + ")", result["name"], result["new_value"], "-", "-", "-"])
+        print(table)
+
+    def belanja(self, usn):
+        print("Daftar Kue yang Tersedia".center(30))
+        print("="*30)
+        bakery().show_product()
+
+        nama_kue = str.capitalize(input("Masukkan Nama Kue         : "))
+        jumlah_beli = int(input("Masukkan Jumlah Pembelian : "))
+
+        # Cari data barang yang sesuai dengan nama kue yang diinput
+        current = barang.find_one({"name": nama_kue})
+        ncurrent = pelanggan.find_one({"name" : usn})
+
+        if not current:
+            print(">> Kue Tidak Ditemukan <<\n\n")
+            input("Tekan Enter Untuk Lanjut...")
         else:
-            for item in self.history:
-                if item[0] == 'add':
-                    table.add_row(['Ditambahkan', item[1], item[2], item[3], item[4], item[5]])
-                elif item[0] == 'remove':
-                    table.add_row(['Dihapus', item[1], '-', '-', '-', '-'])
-                elif item[0] == 'edit':
-                    table.add_row(['Diubah', item[1], item[3] if item[2] == 'harga' else '-', '-', '-', item[3] if item[2] == 'stok' else '-'])
+            if jumlah_beli > current["stock"]:
+                print(">> Maaf, stok kue tidak mencukupi <<\n\n")
+                input("Tekan Enter Untuk Lanjut...")
+                delayclear()
+            else:
+                total_harga = current["price"] * jumlah_beli
+                cleardelay()
+                print("="*30)
+                print("RINCIAN BELANJAAN".center(30))
+                print("="*30)
+                transaction = {"username": ncurrent["name"],
+                               "name": current["name"],
+                               "price": current["price"],
+                               "quantity": jumlah_beli,
+                               "total_price": total_harga,
+                               "date": datetime.datetime.now().strftime("%H:%M %Y-%m-%d")}
+                print("Nama         : {}\nHarga Satuan : {} \nJumlah       : {} \nTotal Harga  : {} \nTanggal      : {}".format(current["name"], current["price"], jumlah_beli, total_harga, datetime.datetime.now().strftime("%H:%M %Y-%m-%d")))
+                print("="*30)
+                input("\n\nTekan Enter Untuk Lanjut...")
+                tanya = input("Lanjutkan Pembayaran? [y/t]: ")
+                if tanya == "y":
+                    cleardelay()
+                    print("="*50)
+                    barang.update_one({"name": current["name"]}, {"$inc": {"stock": -jumlah_beli}})
+                    print("         Membuat Struk Belanja..")
+                    delayclear
+                    harganya = current["price"]
+                    tanggal = datetime.datetime.now().strftime("%H:%M %Y-%m-%d")
+                    print("="*50)
+                    print("<>><<><>><<>>< STRUK BELANJA ><<>><<><>><<>")
+                    print("="*50)
+                    print(f"   Nama Pelanggan   : {usn}")
+                    print(f"   Tanggal          : {tanggal}\n")
+                    print(f"   Nama Kue         : {nama_kue}")
+                    print(f"   Jumlah           : {jumlah_beli}")
+                    print(f"   Harga Satuan Kue : {harganya}")
+                    transaksi.insert_one(transaction)
+                    print("="*50)
+                    print("\n<..><..> Transaksi Berhasil Dilakukan <..><..>\n")
+                    input("Tekan Enter Untuk Lanjut...")
+                    delayclear()
+                else:
+                    print("\n<..><..> Transaksi Dibatalkan <..><..>\n")
+                    input("Tekan Enter Untuk Lanjut...")
+
+def transaction_history(username):
+    # mencari akun dengan username yang sesuai
+    akun = pelanggan.find_one({"name": username})
+    if akun is None:
+        print(f"Akun dengan username {username} tidak ditemukan.")
+        return
+    
+    # mencari transaksi yang dilakukan oleh pengguna
+    transaksi_akun = transaksi.find({"username": username})
+    
+    print("History Belanja:")
+    for t in transaksi_akun:
+        if "items" not in t:
+            print(f"Tidak ada transaksi yang dilakukan oleh pengguna {username}.")
+            return
+        delayclear()
+        detail_barang = []
+        for item in t["items"]:
+            # mencari detail barang berdasarkan nama barang
+            barang_beli = barang.find_one({"name": item["name"]})
+            detail_barang.append(f"{barang_beli['name']} ({barang_beli['harga']})")
+        print(f"Transaksi {t['_id']}:")
+        print(f"\tTanggal: {t['tanggal']}")
+        print(f"\tBarang: {', '.join(detail_barang)}")
+        print(f"\tTotal Harga: {t['total_harga']}")
+
+
+#JUMP SEARCH DESKRIPSI PRODUK
+def jump_search(name):
+    data = []
+    for result in barang.find():
+        data.append(result["name"])
+    n = len(data)
+    jump = int(math.sqrt(n))
+    left, right = 0, 0
+    while right < n and data[right] < name:
+        left = right
+        right = min(right + jump, n - 1)
+    for i in range(left, right + 1):
+        if data[i] == name:
+            result = barang.find_one({"name": name})
+            table = PrettyTable()
+            table.title = "Deskripsi Produk"
+            table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
+            table.add_row([result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
             print(table)
-        
-    def add_transaction(self, name, price): 
-        now = datetime.datetime.now()
-        transaction = {
-            'name': name,
-            'harga': price,
-            # 'jumlah': jumlah_beli,
-            # 'total' : total_harga,
-            'date': now.strftime("%Y-%m-%d %H:%M:%S")
-        }
-        self.transactions.append(transaction)
-
-    #JUMP SEARCH DESKRIPSI PRODUK
-    def jump_search(self, name):
-        if self.head is None:
-            return None
-        
-        # hitung ukuran step yang akan digunakan
-        n = 0
-        current = self.head
-        while current is not None:
-            n += 1
-            current = current.next
-        step = int(math.sqrt(n))
-        
-        # lakukan jump search
-        prev = None
-        current = self.head
-        while current is not None and current.name.lower() < name.lower():
-            prev = current
-            for i in range(step):
-                current = current.next
-                if current is None:
-                    break
-        
-        # jika nama produk ditemukan, tampilkan deskripsinya
-        if current is not None and current.name.lower() == name.lower():
-            cleardelay()
-            print(40*"=")
-            print("Nama Kue : ", current.name)
-            print("Harga    : ", current.price)
-            print("Kategori : ", current.category)
-            print("Rasa     : ", current.flavour)
-            print("Stok     : \n\n", current.stock)
-        else:
-            print("Produk tidak ditemukan.")
-
+            return
+    print("Produk tidak ditemukan")
         
 #MERGE SORT berdasarkan nama
 def merge_sort_nama(arr):
@@ -192,7 +274,7 @@ def merge_sort_nama(arr):
         i = j = k = 0
 
         while i < len(left_arr) and j < len(right_arr):
-            if left_arr[i].name.lower() < right_arr[j].name.lower():
+            if left_arr[i]["name"].lower() < right_arr[j]["name"].lower():
                 arr[k] = left_arr[i]
                 i += 1
             else:
@@ -210,36 +292,30 @@ def merge_sort_nama(arr):
             j += 1
             k += 1
 
-
-
-def merge_sort_wrapper_nama(store):
+def merge_sort_wrapper_nama():
     product_list = []
-    current = store.head
-    while current is not None:
-        product_list.append(current)
-        current = current.next
-
+    for x in barang.find({}):
+        product_list.append(x)
     merge_sort_nama(product_list)
-
-    store.head = product_list[0]
-    current = store.head
-    for i in range(1, len(product_list)):
-        current.next = product_list[i]
-        current = current.next
-    current.next = None
-
+    table = PrettyTable()
+    table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
+    for z in product_list:
+        table.add_row([z["name"], z["price"], z["category"], z["flavour"], z["stock"]])
+    table.sortby = "Nama Kue"
+    print(table)
+        
 #MERGE SORT berdasarkan harga
-def merge_sort_harga(arr):
+def merge_sort_price(arr):
     if len(arr) > 1:
         mid = len(arr) // 2
         left_arr = arr[:mid]
         right_arr = arr[mid:]
-        merge_sort_harga(left_arr)
-        merge_sort_harga(right_arr)
+        merge_sort_price(left_arr)
+        merge_sort_price(right_arr)
         i = j = k = 0
 
         while i < len(left_arr) and j < len(right_arr):
-            if int(left_arr[i].price) < int(right_arr[j].price):
+            if left_arr[i]["price"] < right_arr[j]["price"]:
                 arr[k] = left_arr[i]
                 i += 1
             else:
@@ -257,45 +333,107 @@ def merge_sort_harga(arr):
             j += 1
             k += 1
 
-def merge_sort_wrapper_harga(store):
+
+def merge_sort_wrapper_harga():
     product_list = []
-    current = store.head
-    while current is not None:
-        product_list.append(current)
-        current = current.next
+    for x in barang.find({}):
+        product_list.append(x)
+    merge_sort_price(product_list)
+    table = PrettyTable()
+    table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
+    for z in product_list:
+        table.add_row([z["name"], z["price"], z["category"], z["flavour"], z["stock"]])
+    table.sortby = "Harga"
+    print(table)
 
-    merge_sort_harga(product_list)
+#MERGE SORT berdasarkan kategori
+def merge_sort_kategori(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_arr = arr[:mid]
+        right_arr = arr[mid:]
+        merge_sort_kategori(left_arr)
+        merge_sort_kategori(right_arr)
+        i = j = k = 0
 
-    store.head = product_list[0]
-    current = store.head
-    for i in range(1, len(product_list)):
-        current.next = product_list[i]
-        current = current.next
-    current.next = None
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i]["category"].lower() < right_arr[j]["category"].lower():
+                arr[k] = left_arr[i]
+                i += 1
+            else:
+                arr[k] = right_arr[j]
+                j += 1
+            k += 1
 
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
 
-def ulang(): #Opsi Pengulangan
-    if True:
-        yt=input("Kembali ke Menu? (y/t): ")
-        if yt=="y":
-            pass
-        elif yt=="t":   
-            sys.exit("SEE YOU LATER~~")
-        else:
-            print("Maaf input tidak benar!")
-            ulang()
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            j += 1
+            k += 1
 
-store = bakery()
-store.add_product(shop("Cheese Cake", 100000, "Kue Tart", "Keju", 7))
-store.add_product(shop("Chiffon Cake", 120000, "Kue Tart", "Pandan", 4))
-store.add_product(shop("Matcha Lava Cake", 190000, "Kue Tart", "Matcha", 2))
-store.add_product(shop("Sponge Cake", 90000, "Kue Tart", "Vanilla", 10))
-store.add_product(shop("Black Forest", 150000, "Kue Tart", "Cokelat", 5))        
+def merge_sort_wrapper_kategori():
+    product_list = []
+    for x in barang.find({}):
+        product_list.append(x)
+    merge_sort_kategori(product_list)
+    table = PrettyTable()
+    table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
+    for z in product_list:
+        table.add_row([z["name"], z["price"], z["category"], z["flavour"], z["stock"]])
+    table.sortby = "Kategori"
+    print(table)
+
+#MERGE SORT berdasarkan rasa
+def merge_sort_rasa(arr):
+    if len(arr) > 1:
+        mid = len(arr) // 2
+        left_arr = arr[:mid]
+        right_arr = arr[mid:]
+        merge_sort_rasa(left_arr)
+        merge_sort_rasa(right_arr)
+        i = j = k = 0
+
+        while i < len(left_arr) and j < len(right_arr):
+            if left_arr[i]["flavour"].lower() < right_arr[j]["flavour"].lower():
+                arr[k] = left_arr[i]
+                i += 1
+            else:
+                arr[k] = right_arr[j]
+                j += 1
+            k += 1
+
+        while i < len(left_arr):
+            arr[k] = left_arr[i]
+            i += 1
+            k += 1
+
+        while j < len(right_arr):
+            arr[k] = right_arr[j]
+            j += 1
+            k += 1
+
+def merge_sort_wrapper_rasa():
+    product_list = []
+    for x in barang.find({}):
+        product_list.append(x)
+    merge_sort_rasa(product_list)
+    table = PrettyTable()
+    table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
+    for z in product_list:
+        table.add_row([z["name"], z["price"], z["category"], z["flavour"], z["stock"]])
+    table.sortby = "Rasa"
+    print(table)
 
 def menu_urut():
     print("1. Urutkan Berdasarkan Nama")
     print("2. Urutkan Berdasarkan Harga")
-    print("3. Cari Kue")
+    print("3. Urutkan Berdasarkan Kategori")
+    print("4. Urutkan Berdasarkan Rasa")
+    print("5. Cari Kue")
 
 def menuadmin():
     print("<><><><><> Welcome To Sweet Bakery <><><><><>")
@@ -321,62 +459,91 @@ def loginadmin():
                 print("<=><=><=><=> WELCOME ADMIN ^--^ <=><=><=><=>")
                 menuadmin()
                 choice = int(input("\nInput Opsi (1-6): "))
-                if choice == 1:
-                    cleardelay()
-                    menu_urut()
-                    urut = int(input("Pilih Opsi Urut Produk : "))
-                    if urut == 1:
-                        merge_sort_wrapper_nama(store)
+                while True :
+                    if choice == 1:
                         cleardelay()
-                        print("Produk telah diurutkan berdasarkan nama")
-                        delayclear()
-                        store.show_product()
-                        input("Tekan Enter Untuk Lanjut...")
-                    elif urut == 2:
-                        merge_sort_wrapper_harga(store)
+                        menu_urut()
+                        urut = int(input("Pilih Opsi Urut Produk : "))
+                        if urut == 1:
+                            cleardelay()
+                            print("Produk telah diurutkan berdasarkan nama")
+                            delayclear()
+                            merge_sort_wrapper_nama()
+                            input("Tekan Enter Untuk Lanjut...")
+                            break
+                        elif urut == 2:
+                            cleardelay()
+                            print("Produk telah diurutkan berdasarkan harga")
+                            delayclear()
+                            merge_sort_wrapper_harga()
+                            input("Tekan Enter Untuk Lanjut...")
+                            break
+                        elif urut == 3:
+                            cleardelay()
+                            print("Produk telah diurutkan berdasarkan kategori")
+                            delayclear()
+                            merge_sort_wrapper_kategori()
+                            input("Tekan Enter Untuk Lanjut...")
+                            break
+                        elif urut == 4:
+                            cleardelay()
+                            print("Produk telah diurutkan berdasarkan rasa")
+                            delayclear()
+                            merge_sort_wrapper_rasa()
+                            input("Tekan Enter Untuk Lanjut...")
+                            break
+                        elif urut == 5:
+                            cari = str.capitalize(input("Masukan Nama Kue Yang Ingin Dicari : "))
+                            jump_search(cari)
+                            input("Tekan Enter Untuk Lanjut...")
+                            break
+                        else :
+                            print("Invalid!")
+                            break
+                    elif choice == 2:
+                        name = str.capitalize(input("Input Nama Produk Baru  : "))
+                        price = int(input("Input Harga             : "))
+                        if price > 1000000 or price <= 0:
+                            print("Inputan harga tidak boleh lebih dari 1 juta dan tidak boleh kosong")
+                        else:
+                            category = str.capitalize(input("Input Kategori Produk   : "))
+                            flavour = str.capitalize(input("Input Jenis Rasa Produk  : "))
+                            stock = int(input("Input Jumlah Stok       : "))
+                            if stock > 100 or stock <= 0:
+                                print("Inputan stok tidak boleh lebih dari 100 dan tidak boleh kosong")
+                            else:
+                                update = shop(name, price, category, flavour, stock)
+                                bakery().add_product(update)
+                                cleardelay()
+                                print("Produk Baru Berhasil Ditambahkan")
+                                input("Tekan Enter Untuk Lanjut...")
+                                break
+                    elif choice == 3:
+                        name = input("Masukan Nama Produk yang Ingin Dihapus : ")
                         cleardelay()
-                        print("Produk telah diurutkan berdasarkan harga!")
+                        bakery().remove_product(name)
+                        input("Tekan Enter Untuk Lanjut...")
+                        break
+                    elif choice == 4:
+                        cleardelay()
+                        bakery().show_product()
+                        upd = input("Masukan Nama Produk yang Ingin Diubah : ")
+                        cleardelay()
+                        bakery().edit_product(upd)
+                        input("Tekan Enter Untuk Lanjut...")
+                        break
+                    elif choice == 5:
+                        cleardelay()
+                        bakery().show_history()
+                        input("Tekan Enter Untuk Lanjut...")
+                        break
+                    elif choice == 6:
                         delayclear()
-                        store.show_product()
-                        input("Tekan Enter Untuk Lanjut...")
-                    elif urut == 3:
-                        cari = input("Masukan Nama Kue Yang Ingin Dicari : ")
-                        store.jump_search(cari)
-                        input("Tekan Enter Untuk Lanjut...")
-                    else :
-                        print("Invalid!")
-                elif choice == 2:
-                    name = input("Input Nama Produk Baru  : ")
-                    price = int(input("Input Harga             : "))
-                    category = input("Input Kategori Produk   : ")
-                    flavour = input("Input Jenis Rasa Produk : ")
-                    stock = int(input("Input Jumlah Stok       : "))
-                    update = shop(name, price, category, flavour, stock)
-                    store.add_product(update)
-                    cleardelay()
-                    print("Produk Baru Berhasil Ditambahkan")
-                    input("Tekan Enter Untuk Lanjut...")
-                elif choice == 3:
-                    name = input("Masukan Nama Produk yang Ingin Dihapus : ")
-                    cleardelay()
-                    store.remove_product(name)
-                    input("Tekan Enter Untuk Lanjut...")
-                elif choice == 4:
-                    cleardelay()
-                    store.show_product()
-                    upd = input("Masukan Nama Produk yang Ingin Diubah : ")
-                    cleardelay()
-                    store.edit_product(upd)
-                    input("Tekan Enter Untuk Lanjut...")
-                elif choice == 5:
-                    cleardelay()
-                    store.show_history()
-                    input("Tekan Enter Untuk Lanjut...")
-                elif choice == 6:
-                    raise SystemExit
-                else:
-                    print("Pilihan Tidak Sesuai Mohon Coba Lagi")
-                    time.sleep(0.8)
+                        return
+                    else:
+                        print("Pilihan Tidak Sesuai Mohon Coba Lagi")
+                        time.sleep(0.8)
+                        break
         else :
             print("Invalid Login")
 
@@ -388,114 +555,83 @@ def menupelanggan():
     print("3. Exit")
 
 def loginuser():
-    usn = input("Input username anda: ")
-    pasw = getpass.getpass("Input password anda: ")
-    index = userbiasa["User"].index(usn)
-    if usn == userbiasa["User"][index] and pasw == userbiasa["Sandi"][index]:
-        cleardelay()
-        print("<=><=><=><=> Selamat datang",usn,"<=><=><=><=>")
-        delayclear()
-        while True:
-                os.system("cls")
-                menupelanggan()
-                choice = int(input("\nInput Opsi (1-3): "))
-                if choice == 1:
-                    cleardelay()
-                    menu_urut()
-                    urut = int(input("Pilih Opsi Urut Produk : "))
-                    if urut == 1:
-                        merge_sort_wrapper_nama(store)
+    while True :
+        os.system("cls")
+        print(40*"=")
+        print("         LOGIN AKUN   ")
+        print(40*"=")
+        usn = str.capitalize(input("Masukkan nama pengguna: "))
+        password = getpass.getpass("Masukkan kata sandi: ")
+        result = pelanggan.find_one({"name": usn})
+        if result is None:
+            print("Maaf, nama pengguna tidak terdaftar.")
+        elif result["password"] != password:
+            print("Maaf, kata sandi salah.")
+        else:
+            cleardelay()
+            print("<=><=><=><=> Selamat datang",usn,"<=><=><=><=>")
+            delayclear()
+            print("<=><=><=><=> Selamat Berbelanja <=><=><=><=>")
+            delayclear()
+            while True:
+                    os.system("cls")
+                    menupelanggan()
+                    choice = int(input("\nInput Opsi (1-3): "))
+                    if choice == 1:
                         cleardelay()
-                        print("Produk telah diurutkan berdasarkan nama")
-                        delayclear()
-                        store.show_product()
-                        input("Tekan Enter Untuk Lanjut...")
-                    elif urut == 2:
-                        merge_sort_wrapper_harga(store)
-                        cleardelay()
-                        print("Produk telah diurutkan berdasarkan harga!")
-                        delayclear()
-                        store.show_product()
-                        input("Tekan Enter Untuk Lanjut...")
-                    elif urut == 3:
-                        cari = input("Masukan Nama Kue Yang Ingin Dicari : ")
-                        store.jump_search(cari)
-                        input("Tekan Enter Untuk Lanjut...")
-                    else :
-                        print("Invalid!")
-                elif choice == 2:
-                    store.show_product()
-                    nama_kue = input("Masukkan Nama Kue         : ")
-                    jumlah_beli = int(input("Masukkan Jumlah Pembelian : "))
-                    cleardelay()
-                    current = None
-                    product_found = False
-                    node = store.head
-                    while node is not None:
-                        if node.name == nama_kue:
-                            current = node
-                            product_found = True
-                            break
-                        node = node.next
-                    if not product_found:
-                        print(">> Kue Tidak Ditemukan <<\n\n")
-                        input("Tekan Enter Untuk Lanjut...")
-                    else:
-                        if jumlah_beli > current.stock:
-                            print(">> Maaf, stok kue tidak mencukupi <<\n\n")
+                        menu_urut()
+                        urut = int(input("Pilih Opsi Urut Produk : "))
+                        if urut == 1:
+                            cleardelay()
+                            print("Produk telah diurutkan berdasarkan nama")
+                            delayclear()
+                            merge_sort_wrapper_nama()
                             input("Tekan Enter Untuk Lanjut...")
-                        else:
-                            total_harga = current.price * jumlah_beli
-                            print("RINCIAN BELANJAAN".center(30))
-                            transaction = {"name": current.name,
-                                        "price": current.price,
-                                        "quantity": jumlah_beli,
-                                        "total_price": total_harga,
-                                        "date": datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")}
-                            print("Nama         : {}\nHarga Satuan : {} \nJumlah       : {} \nTotal Harga  : {} \nTanggal      : {}".format(
-                                current.name, current.price, jumlah_beli, total_harga, datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")))
-                            store.add_transaction(current.name, total_harga)
-                            input("\n\nTekan Enter Untuk Lanjut...")
+                        elif urut == 2:
                             cleardelay()
-                            tanya = input("Lanjutkan Pembayaran? [y/t]: ")
+                            print("Produk telah diurutkan berdasarkan harga")
+                            delayclear()
+                            merge_sort_wrapper_harga()
+                            input("Tekan Enter Untuk Lanjut...")
+                            
+                        elif urut == 3:
                             cleardelay()
-                            if tanya == "y":
-                                print("Membuat Struk Belanja..")
-                                harganya = current.price
-                                tanggal = datetime.datetime.now().strftime("%Y-%m-%d %H:%M:%S")
-                                with open("transaction.txt", "a") as invoice:
-                                    print("="*50, file=invoice)
-                                    print(" STRUK BELANJA ".center(50,*"="), file=invoice)
-                                    print("="*50, file=invoice)
-                                    print(f"Nama Pelanggan: {usn}", file=invoice)
-                                    print(f"Tanggal       : {tanggal}\n", file=invoice)
-                                    print(f"   Nama Kue         : {nama_kue}", file=invoice)
-                                    print(f"   Jumlah           : {jumlah_beli}", file=invoice)
-                                    print(f"   Harga Satuan Kue : {harganya}", file=invoice)
-                                    print(f"   Total Harga      : {total_harga}", file=invoice)
-                                    print(f"   Tanggal          : {tanggal}\n", file=invoice) 
-                                    print("="*50, file=invoice) 
-                                    print(" TERIMA KASIH ".center(50,"="), file=invoice)
-                                    print("="*50, "\n\n", file=invoice)
-                                    delayclear()
-                                    print(">> Transaksi berhasil")
-                                    print("Terima kasih Berbelanja Di Toko Kami!\n\n")
-                                    input("Tekan Enter Untuk Lanjut...")
-                                    
-                            elif tanya == "t":
-                                print("Terima Kasih Sudah Berkunjung!\n\n")
-                                input("Tekan Enter Untuk Lanjut...")
-                elif choice == 3:
-                    return
-                else:
-                    print("Pilihan Tidak Sesuai Mohon Coba Lagi")
-                    time.sleep(0.8)
-    else: 
-        print("Username atau Password Salah")
-
+                            print("Produk telah diurutkan berdasarkan harga")
+                            delayclear()
+                            merge_sort_wrapper_kategori()
+                            input("Tekan Enter Untuk Lanjut...")
+                            break
+                        elif urut == 4:
+                            cleardelay()
+                            print("Produk telah diurutkan berdasarkan harga")
+                            delayclear()
+                            merge_sort_wrapper_rasa()
+                            input("Tekan Enter Untuk Lanjut...")
+                            
+                        elif urut == 5:
+                            cari = str.capitalize(input("Masukan Nama Kue Yang Ingin Dicari : "))
+                            jump_search(cari)
+                            input("Tekan Enter Untuk Lanjut...")
+                            
+                        else :
+                            print("Invalid!")
+                            
+                    elif choice == 2:
+                        bakery().belanja(usn)
+                    
+                    elif choice == 3:
+                        transaction_history(usn)
+                        
+                    elif choice == 4:
+                        delayclear()
+                        return
+                    else:
+                        print("Pilihan Tidak Sesuai Mohon Coba Lagi")
+                        time.sleep(0.8)
 
 def program():
     while True :
+        os.system("cls")
         print(". . . . . .<><><><><>. . . . . .<><><><><>. . . . . .")
         print("1. Login Admin")
         print("2. Login Pelanggan")
@@ -509,20 +645,28 @@ def program():
             elif choice == 2:
                 loginuser()
             elif choice == 3:
-                regisUser = input("Input User Baru: ")
-                regisPass = getpass.getpass("Input Password baru: ")
-                if regisUser in admin["User"] or regisUser in userbiasa["User"]:
-                    print("Maaf Username Dengan Nama Tersebut Sudah Ada")
-                elif any(x.isalpha() for x in regisUser):
-                    print ("Mohon Untuk Memasukan Angka Sebagai Password")
-                elif any(x.isalpha() for x in regisUser) and any(x.isalpha() or x.isnumeric() for x in regisPass):
-                    userbiasa["User"].append(regisUser)
-                    userbiasa["Sandi"].append(regisPass)
-                    cleardelay()
-                    print ("Berhasil Melakukan Registrasi")
-                    delayclear()
+                os.system("cls")
+                print(40*"=")
+                print("       REGISTRASI AKUN      ")
+                print(40*"=")
+                regisUser = str.capitalize(input("Masukkan nama pengguna baru: "))
+                regisPass = getpass.getpass("Masukkan kata sandi baru: ")
+                result = pelanggan.find_one({"nama": regisUser})
+                if result is not None:
+                    print("Maaf, nama pengguna sudah terdaftar")
+                elif not regisUser.isalnum():
+                    print("Nama pengguna hanya boleh terdiri dari huruf dan angka.")
+                elif not regisPass.isnumeric():
+                    print("Kata sandi hanya boleh terdiri dari angka.")
                 else:
-                    print("Tolong Masukan Input Dengan Benar")
+                    user_data = {
+                        "name": regisUser,
+                        "password": regisPass
+                    }
+                    pelanggan.insert_one(user_data)
+                    print(40*"=")
+                    print("Registrasi akun pembeli berhasil dilakukan.\n")
+                    input("Tekan Enter Untuk Lanjut...")
             elif choice == 4 :
                 raise SystemExit
             elif choice is not True or choice is str:
