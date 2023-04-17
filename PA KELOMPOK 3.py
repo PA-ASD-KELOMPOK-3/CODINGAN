@@ -730,6 +730,10 @@ def program():
                     print("Registrasi akun pembeli berhasil dilakukan.\n")
                     input("Tekan Enter Untuk Lanjut...")
             elif choice == 4 :
+                cleardelay()
+                print(40*"<>")
+                print("|               Terimakasih sudah menggunakan layanan kami :)                  |".center(70))
+                print(40*"<>")
                 raise SystemExit
             elif choice is not True or choice is str:
                 cleardelay()
