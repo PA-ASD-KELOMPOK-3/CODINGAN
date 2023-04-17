@@ -279,7 +279,8 @@ class bakery:
                 
     def search(self):
         os.system("cls")
-        print("Cari Produk")
+        print("=" * 30)
+        print("Cari Produk".center(30))
         print("=" * 30)
         nama = str.title(input("Masukkan nama produk: "))
         result = self.jump_search(nama)
@@ -732,15 +733,15 @@ def program():
                 raise SystemExit
             elif choice is not True or choice is str:
                 cleardelay()
-                print("Invalid Key1")
+                print("Terjadi Kesalahan Opsi")
                 delayclear()
         except ValueError :
             cleardelay()
-            print("Invalid Key2")
+            print("Terjadi Kesalahan")
             delayclear()
         except KeyboardInterrupt :
             cleardelay()
-            print("Invalid Key3")
+            print("Key yang Diinput Tidak Sesuai, Anda Dialihkan ke menu utama!")
             delayclear()
 
 program()
