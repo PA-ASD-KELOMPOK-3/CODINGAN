@@ -169,7 +169,7 @@ class bakery:
         print("="*54)
         bakery().show_product()
 
-        nama_kue = str.title(input("Masukkan Nama Kue         : "))
+        nama_kue = str(input("Masukkan Nama Kue : ")).strip().lower().title()
         jumlah_beli = int(input("Masukkan Jumlah Pembelian : "))
 
         # Cari data barang yang sesuai dengan nama kue yang diinput
@@ -257,16 +257,16 @@ class bakery:
 def jump_search(name):
     data = []
     for result in barang.find():
-        data.append(result["name"])
+        data.append(result["name"].casefold())
     n = len(data)
     jump = int(math.sqrt(n))
     left, right = 0, 0
-    while right < n and data[right] < name:
+    while right < n and data[right] < name.casefold():
         left = right
         right = min(right + jump, n - 1)
     for i in range(left, right + 1):
-        if data[i] == name:
-            result = barang.find_one({"name": name})
+        if data[i] == name.casefold():
+            result = barang.find_one({"name": {"$regex": f"^{name}$", "$options": "i"}})
             table = PrettyTable()
             table.title = "Deskripsi Produk"
             table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
