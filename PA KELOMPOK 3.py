@@ -257,16 +257,16 @@ class bakery:
 def jump_search(name):
     data = []
     for result in barang.find():
-        data.append(result["name"].casefold())
+        data.append(result["name"].strip())
     n = len(data)
     jump = int(math.sqrt(n))
     left, right = 0, 0
-    while right < n and data[right] < name.casefold():
+    while right < n and data[right].lower() < name.strip().lower():
         left = right
         right = min(right + jump, n - 1)
     for i in range(left, right + 1):
-        if data[i] == name.casefold():
-            result = barang.find_one({"name": {"$regex": f"^{name}$", "$options": "i"}})
+        if data[i].lower() == name.strip().lower():
+            result = barang.find_one({"name": {"$regex": f"^{data[i]}$", "$options": "i"}})
             table = PrettyTable()
             table.title = "Deskripsi Produk"
             table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
