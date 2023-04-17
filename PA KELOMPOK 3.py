@@ -682,7 +682,7 @@ def loginuser():
                         delayclear()
                         return
                     else:
-                        print("Pilihan Tidak Sesuai Mohon Coba Lagi")
+                        print("Pilihan Tidak Sesuai, Mohon Coba Lagi")
                         time.sleep(0.8)
 
 def program():
@@ -747,5 +747,4 @@ def program():
             cleardelay()
             print("Key yang Diinput Tidak Sesuai, Anda Dialihkan ke menu utama!")
             delayclear()
-
 program()
