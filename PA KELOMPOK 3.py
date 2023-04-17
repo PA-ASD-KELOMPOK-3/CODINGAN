@@ -161,7 +161,6 @@ class bakery:
                 elif result["action"] == "edit":
                     table.add_row(["Produk diubah (" + result["field_name"] + ")", result["name"], result["new_value"], "-", "-", "-"])
             print(table)
-            
 
     def belanja(self, usn):
         print("="*54)
@@ -253,31 +252,46 @@ class bakery:
             input("Tekan Enter Untuk Lanjut...")
             delayclear()
 
-#JUMP SEARCH DESKRIPSI PRODUK
-def jump_search(name):
-    data = []
-    for result in barang.find():
-        data.append(result["name"].strip())
-    n = len(data)
-    jump = int(math.sqrt(n))
-    left, right = 0, 0
-    while right < n and data[right].lower() < name.strip().lower():
-        left = right
-        right = min(right + jump, n - 1)
-    for i in range(left, right + 1):
-        if data[i].lower() == name.strip().lower():
-            result = barang.find_one({"name": {"$regex": f"^{data[i]}$", "$options": "i"}})
+    #JUMP SEARCH DESKRIPSI PRODUK
+    def jump_search(self, key):
+            data = []
+            hasil = barang.find({})
+            for i in hasil:
+                data.append(i)
+            merge_sort_nama(data)
+
+            if not data:
+                print("Data tidak ditemukan!")
+                return None
+
+            n = len(data)
+            step = int(n ** 0.5)
+            prev = 0
+        
+            while prev < n and data[prev]['name'] < key:
+                prev += step
+            prev -= step
+            while prev < n:
+                if data[prev]['name'] == key:
+                    return data[prev]
+                prev += 1
+            return None
+                
+    def search(self):
+        os.system("cls")
+        print("Cari Produk")
+        print("=" * 30)
+        nama = str.title(input("Masukkan nama produk: "))
+        result = self.jump_search(nama)
+        if result is not None:
             table = PrettyTable()
             table.title = "Deskripsi Produk"
             table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
             table.add_row([result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
             print(table)
-            return
-    os.system("cls")
-    print("Produk tidak ditemukan")
-
-
-        
+        input("Tekan Enter Untuk Lanjut...")
+        delayclear()
+      
 #MERGE SORT berdasarkan nama
 def merge_sort_nama(arr):
     if len(arr) > 1:
@@ -351,7 +365,6 @@ def merge_sort_harga(arr):
             arr[k] = right_arr[j]
             j += 1
             k += 1
-
 
 def merge_sort_wrapper_harga():
     product_list = []
@@ -527,31 +540,36 @@ def loginadmin():
                             input("Tekan Enter Untuk Lanjut...")
                             break
                         elif urut == 5:
-                            cari = str.title(input("Masukan Nama Kue Yang Ingin Dicari : "))
-                            jump_search(cari)
-                            input("Tekan Enter Untuk Lanjut...")
+                            bakery().search()
                             break
                         else :
                             print("Invalid!")
                             break
                     elif choice == 2:
                         name = str.title(input("Input Nama Produk Baru  : "))
-                        price = int(input("Input Harga             : "))
-                        if price > 1000000 or price <= 0:
-                            print("Inputan harga tidak boleh lebih dari 1 juta dan tidak boleh kosong")
-                        else:
-                            category = str.title(input("Input Kategori Produk   : "))
-                            flavour = str.title(input("Input Jenis Rasa Produk  : "))
-                            stock = int(input("Input Jumlah Stok       : "))
-                            if stock > 100 or stock <= 0:
-                                print("Inputan stok tidak boleh lebih dari 100 dan tidak boleh kosong")
+                        check = barang.find_one({"name": name})
+                        if check is not None:
+                            print("Produk sudah ada di menu")
+                        elif check is None :
+                            price = int(input("Input Harga             : "))
+                            if price > 1000000 or price <= 0:
+                                print("Inputan harga tidak boleh lebih dari 1 juta dan tidak boleh kosong")
                             else:
-                                update = shop(name, price, category, flavour, stock)
-                                bakery().add_product(update)
-                                cleardelay()
-                                print("Produk Baru Berhasil Ditambahkan")
-                                input("Tekan Enter Untuk Lanjut...")
-                                break
+                                category = str.title(input("Input Kategori Produk   : "))
+                                flavour = str.title(input("Input Jenis Rasa Produk  : "))
+                                stock = int(input("Input Jumlah Stok       : "))
+                                if stock > 100 or stock <= 0:
+                                    print("Inputan stok tidak boleh lebih dari 100 dan tidak boleh kosong")
+                                else:
+                                    update = shop(name, price, category, flavour, stock)
+                                    bakery().add_product(update)
+                                    cleardelay()
+                                    print("Produk Baru Berhasil Ditambahkan")
+                                    input("Tekan Enter Untuk Lanjut...")
+                                    break
+                        else :
+                            print("")
+                            
                     elif choice == 3:
                         name = str.title(input("Masukan Nama Produk yang Ingin Dihapus : "))
                         cleardelay()
@@ -647,10 +665,8 @@ def loginuser():
                             input("Tekan Enter Untuk Lanjut...")
                             
                         elif urut == 5:
-                            cari = str.title(input("Masukan Nama Kue Yang Ingin Dicari : "))
-                            jump_search(cari)
-                            input("Tekan Enter Untuk Lanjut...")
-                            
+                            bakery().search()
+
                         else :
                             print("Invalid!")
                             
