@@ -85,7 +85,7 @@ ulang
 
 Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilihan yaitu Login Admin, Login Pelanggan, Registrasi Pelanggan, dan Exit.
 
-![Screenshot 2023-04-08 122704](https://user-images.githubusercontent.com/127454468/230704087-12d68a30-993b-4881-9fe4-2fbb10f9c2f1.png)
+![image](https://user-images.githubusercontent.com/127454468/232953396-cd507db7-d551-401a-9a55-c40fe4e44618.png)
 
 ### 🥨**User**🥨
 #### Registrasi Pelanggan
@@ -132,7 +132,7 @@ Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program den
 
 Setelah program di run, admin harus memilih menu awal `opsi ke-1` lalu memasukkan username dan password yang benar untuk bisa masuk ke dalam program.
 
-![Screenshot 2023-04-08 122758](https://user-images.githubusercontent.com/127454468/230756403-bca9b239-2061-4f77-b461-48181878a41e.png)
+![image](https://user-images.githubusercontent.com/127454468/232953524-aae17784-5c12-4b01-aa6d-e87de2b092fa.png)
 
 - Menu Admin
 
@@ -148,11 +148,20 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 
 ##### - Jika produk diurutkan berdasarkan nama
   
-![Screenshot 2023-04-08 122900](https://user-images.githubusercontent.com/127454468/230705054-d8e8f630-e14f-417e-a94d-e5e81ae300d9.png)
+![image](https://user-images.githubusercontent.com/127454468/232953664-f1335b19-fe2a-45df-a305-52f3f4c1f3a3.png)
 
 ##### - Jika produk diurukan berdasarkan harga
 
-![Screenshot 2023-04-08 122915](https://user-images.githubusercontent.com/127454468/230705059-4c53d6c1-4574-4959-a848-eb76acebd930.png)
+![image](https://user-images.githubusercontent.com/127454468/232953764-b4c8fba5-9b06-42d1-9b1d-060f20d970c4.png)
+
+![image](https://user-images.githubusercontent.com/127454468/232953832-7f1c310d-620d-4aba-b494-f65dc871e1dc.png)
+
+![image](https://user-images.githubusercontent.com/127454468/232953911-0e5b5d43-7427-4602-a4af-47d1b928d3af.png)
+
+![Screenshot 2023-04-19 104918](https://user-images.githubusercontent.com/127454468/232954219-77203e39-1e68-49f7-978e-f5dc04edf80a.png)
+
+![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
+
 
 2. Tambahkan Produk Baru ke dalam List
 
