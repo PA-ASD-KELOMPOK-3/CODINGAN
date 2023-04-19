@@ -73,7 +73,8 @@ ulang
 ### Fungsionalitas
 - Pembeli dapat meregistrasi diri untuk mendapatkan akun untuk masuk ke dalam program.
 - Pembeli dapat masuk ke program dengan melakukan login menggunakan akun yang dimiliki.
-- Pembeli dapat melihat menu, mengambil antrean, dan melakukan pembelian.
+- Pembeli dapat melihat menu dan melakukan pembelian.
+- Pembeli dapat melihat riwayat transaksi.
 - Pembeli dan Admin dapat memilih mengurutkan menu berdasarkan nama dan harga.
 - Admin memilikI akun yang dapat digunakan untuk masuk ke dalam program.
 - Admin dapat melihat, menambah, menghapus, dan mengedit produk.
