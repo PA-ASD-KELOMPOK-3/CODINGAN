@@ -227,7 +227,6 @@ class bakery:
                     print(f"   Jumlah           : {jumlah_beli}")
                     print(f"   Harga Satuan Kue : {harganya}")
                     transaksi.insert_one(transaction)
-                    cleardelay()
                     print("="*50)
                     print("<..><..> Transaksi Berhasil Dilakukan <..><..>".center(50))
                     print("="*50)
