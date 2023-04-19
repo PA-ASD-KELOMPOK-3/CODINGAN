@@ -103,7 +103,7 @@ Di menu ini, pelanggan harus memilih menu awal `opsi ke-2` dan memasukkan userna
 
 Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri dari 3 pilihan, yaitu Tampilkan Produk Yang Tersedia, Shopping, dan Exit.
 
-![Screenshot 2023-04-08 123441](https://user-images.githubusercontent.com/127454468/230704761-297cc646-b8d7-4aec-83c2-61e53005682e.png)
+![image](https://user-images.githubusercontent.com/127454468/232956243-f7be77c5-9b46-4c78-96f2-82f4b554ed55.png)
 
 - 1.Tampilkan Produk Yang Tersedia
 
@@ -167,34 +167,42 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 
 Untuk menambahkan produk baru maka admin dapat memilih `menu admin ke-2`, setelah memilih menu, admin akan diminta untuk menginput Nama Produk, Harga, Kategori Produk, Jenis Rasa Produk, dan Jumlah Stok.
 
-![Screenshot 2023-04-08 123029](https://user-images.githubusercontent.com/127454468/230756320-f933a6eb-08e6-4578-aad4-cfef95034df2.png)
+![Screenshot 2023-04-19 105326](https://user-images.githubusercontent.com/127454468/232954849-2699bf8e-1706-47a8-887c-850a5d1628b1.png)
+
 ```
 Tampilan jika produk berhasil ditambahkan
 ```
-![Screenshot 2023-04-08 123045](https://user-images.githubusercontent.com/127454468/230756335-4a49ad8c-2773-4c5f-858f-8a89c2598aed.png)
+![image](https://user-images.githubusercontent.com/127454468/232954795-359285d7-d570-4c5a-9620-3fd9765de33b.png)
 ```
 Produk baru otomatis akan di urutkan di dalam list produk
 ```
-![Screenshot 2023-04-08 123218](https://user-images.githubusercontent.com/127454468/230756360-a5f2e1f8-2103-4a06-95da-182b8a1d752e.png)
+![image](https://user-images.githubusercontent.com/127454468/232955008-2f683823-519c-4a44-810a-f7c8c53e4600.png)
 
 3. Hapus Produk Dari List
 
 Untuk menghapus produk yang telah ada maka admin dapat memilih `menu admin ke-3`, setelah memilih menu, admin akan diminta untuk menginput nama produk yang ingin dihapus.
 
-![Screenshot 2023-04-08 123100](https://user-images.githubusercontent.com/127454468/230756343-9015edb0-8e28-4275-ae50-13058b31a90b.png)
+![image](https://user-images.githubusercontent.com/127454468/232955155-2055f8af-6afc-4f0d-8535-18c589289eee.png)
 ```
 Tampilan jika produk berhasil dihapus
 ```
-![Screenshot 2023-04-08 123114](https://user-images.githubusercontent.com/127454468/230756353-8fdfef9c-4417-4451-bee6-4b3a2a0518ab.png)
+![image](https://user-images.githubusercontent.com/127454468/232955200-9e33177c-149a-40dd-8136-70457def4bc7.png)
+
+
+![image](https://user-images.githubusercontent.com/127454468/232955474-b36a3b14-d7fb-454d-a118-9349e667a1fd.png)
+![Screenshot 2023-04-19 105931](https://user-images.githubusercontent.com/127454468/232955843-f2c95d27-e960-40c9-a78f-9bb770128656.png)
+
+![Screenshot 2023-04-19 105938](https://user-images.githubusercontent.com/127454468/232955815-64bebad8-4ff6-4ba6-a57c-01e6439a8e47.png)
+
 
 4. Tampilkan History
 
 Jika ingin melihat history produk maka admin dapat memilih `menu admin ke-4`, maka program akan menampilkan history produk yang telah ditambahkan dan dihapus.
 
-![Screenshot 2023-04-09 134220](https://user-images.githubusercontent.com/127454468/230756495-a6c65b49-215d-4dc4-b161-7bf90d5d3d83.png)
+![Screenshot 2023-04-19 110009](https://user-images.githubusercontent.com/127454468/232955777-c75e3cce-1b41-44a5-8db3-cba393324c90.png)
 
 5. Exit
 
 Jika admin telah selesai menggunakan program, maka admin dapat keluar program dengan memilih menu `exit`.
 
-![Screenshot 2023-04-08 123358](https://user-images.githubusercontent.com/127454468/230756366-461dec79-55fa-4702-ac6a-113ff5ca55ef.png)
+![image](https://user-images.githubusercontent.com/127454468/232956070-7fbfbca9-5888-493f-8fa8-af487896efd7.png)
