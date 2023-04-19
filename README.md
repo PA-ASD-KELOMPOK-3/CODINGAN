@@ -171,14 +171,21 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 
 ![image](https://user-images.githubusercontent.com/127454468/232953764-b4c8fba5-9b06-42d1-9b1d-060f20d970c4.png)
 
+##### - Jika produk diurukan berdasarkan kategori
+
 ![image](https://user-images.githubusercontent.com/127454468/232953832-7f1c310d-620d-4aba-b494-f65dc871e1dc.png)
+
+##### - Jika produk diurukan berdasarkan rasa
 
 ![image](https://user-images.githubusercontent.com/127454468/232953911-0e5b5d43-7427-4602-a4af-47d1b928d3af.png)
 
+##### - Jika ingin mencari produk
+
 ![Screenshot 2023-04-19 104918](https://user-images.githubusercontent.com/127454468/232954219-77203e39-1e68-49f7-978e-f5dc04edf80a.png)
 
-![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
+##### Program menampilkan produk yang dicari
 
+![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
 
 2. Tambahkan Produk Baru ke dalam List
 
