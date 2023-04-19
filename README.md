@@ -140,7 +140,7 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 2. Beli Kue
 
-
+Jika ingin membeli produk, maka pelanggan dapat memilih `menu pelanggan ke-2`, setelah memilih menu, pelanggan akan diminta untuk memasukan produk yan.
 
 
 
