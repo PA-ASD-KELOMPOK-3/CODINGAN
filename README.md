@@ -112,12 +112,28 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 ![image](https://user-images.githubusercontent.com/127454468/232958603-f2de33cc-cbe7-4f0b-97a3-d8cd72854ae9.png)
 ##### - Jika produk diurutkan berdasarkan nama
+  
+![image](https://user-images.githubusercontent.com/127454468/232953664-f1335b19-fe2a-45df-a305-52f3f4c1f3a3.png)
 
-![Screenshot 2023-04-08 122900](https://user-images.githubusercontent.com/127454468/230705054-d8e8f630-e14f-417e-a94d-e5e81ae300d9.png)
+##### - Jika produk diurukan berdasarkan harga
 
-#####- Jika produk diurukan berdasarkan harga
+![image](https://user-images.githubusercontent.com/127454468/232953764-b4c8fba5-9b06-42d1-9b1d-060f20d970c4.png)
 
-![Screenshot 2023-04-08 122915](https://user-images.githubusercontent.com/127454468/230705059-4c53d6c1-4574-4959-a848-eb76acebd930.png)
+##### - Jika produk diurukan berdasarkan kategori
+
+![image](https://user-images.githubusercontent.com/127454468/232953832-7f1c310d-620d-4aba-b494-f65dc871e1dc.png)
+
+##### - Jika produk diurukan berdasarkan rasa
+
+![image](https://user-images.githubusercontent.com/127454468/232953911-0e5b5d43-7427-4602-a4af-47d1b928d3af.png)
+
+##### - Jika ingin mencari produk
+
+![Screenshot 2023-04-19 104918](https://user-images.githubusercontent.com/127454468/232954219-77203e39-1e68-49f7-978e-f5dc04edf80a.png)
+
+##### Program menampilkan produk yang dicari
+
+![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
 
 - 2.Shopping
 
@@ -155,7 +171,7 @@ Setelah program di run, admin harus memilih menu awal `opsi ke-1` lalu memasukka
 
 Jika login berhasil, maka program akan memunculkan menu admin yang terdiri dari 6 pilihan, yaitu Tampilkan Produk Yang Tersedia, Tambahkan Produk Baru ke dalam List, Hapus Produk Dari List, Tampilkan History dan Exit.
 
-![Screenshot 2023-04-08 122807](https://user-images.githubusercontent.com/127454468/230756311-3c23c451-1a89-4c8f-8759-618c70421bc8.png)
+![Screenshot 2023-04-19 104307](https://user-images.githubusercontent.com/127454468/232959845-a4a9029e-66f0-47fa-a78e-02f1cb897f6c.png)
 
 1. Tampilkan Produk Yang Tersedia
 
