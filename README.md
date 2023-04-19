@@ -91,13 +91,13 @@ Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilih
 #### Registrasi Pelanggan
 
 Jika pelanggan belum memiliki akun, maka dapat memilih menu awal `opsi ke-3` untuk registrasi akun. Di menu registrasi, pelanggan akan diminta untuk memasukkan username dan password baru.
-![Screenshot 2023-04-08 130750](https://user-images.githubusercontent.com/127454468/230704393-e4518c9b-779e-49c4-abd1-4a78b46a612c.png)
+![Screenshot 2023-04-19 110721](https://user-images.githubusercontent.com/127454468/232958807-0ea18d5d-75dc-4620-90fe-58b076b5445a.png)
 
 Setelah registrasi maka program akan kembali ke menu awal dan pelanggan dapat memasukkan username dan password yang telah didaftarkan di menu login pelanggan.
 ####  Login Pelanggan
 
 Di menu ini, pelanggan harus memilih menu awal `opsi ke-2` dan memasukkan username dan password untuk bisa masuk ke dalam program.
-![Screenshot 2023-04-08 131321](https://user-images.githubusercontent.com/127454468/230704501-e8c12b79-8e94-4fbd-b85f-b3e1a1c61419.png)
+![Screenshot 2023-04-19 110733](https://user-images.githubusercontent.com/127454468/232958790-28e83f6c-c744-4365-a8a6-dcda75ccbb77.png)
 
 - Menu Pelanggan
 
@@ -109,8 +109,7 @@ Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri d
 
 Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, setelah memilih menu, pelanggan dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
 
-![Screenshot 2023-04-08 122835](https://user-images.githubusercontent.com/127454468/230704986-c4cd74ad-48eb-43c2-8c58-2ae91fc3e804.png)
-
+![image](https://user-images.githubusercontent.com/127454468/232958603-f2de33cc-cbe7-4f0b-97a3-d8cd72854ae9.png)
 ##### - Jika produk diurutkan berdasarkan nama
 
 ![Screenshot 2023-04-08 122900](https://user-images.githubusercontent.com/127454468/230705054-d8e8f630-e14f-417e-a94d-e5e81ae300d9.png)
@@ -136,6 +135,8 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 ![Screenshot 2023-04-19 111254](https://user-images.githubusercontent.com/127454468/232958039-301b70fe-1558-457a-98c3-ffaae6865cd9.png)
 
+![Screenshot 2023-04-19 110838](https://user-images.githubusercontent.com/127454468/232958687-ae40835b-d751-4c49-8eb8-7b92b79ce687.png)
+
 - 3.Exit
 
 Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `exit`.
@@ -159,7 +160,7 @@ Jika login berhasil, maka program akan memunculkan menu admin yang terdiri dari 
 
 Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-1`, setelah memilih menu, admin dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
 
-![Screenshot 2023-04-08 122835](https://user-images.githubusercontent.com/127454468/230704986-c4cd74ad-48eb-43c2-8c58-2ae91fc3e804.png)
+![image](https://user-images.githubusercontent.com/127454468/232958639-da81a720-faac-4198-b831-f6ebcbc4831a.png)
 
 ##### - Jika produk diurutkan berdasarkan nama
   
