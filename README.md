@@ -109,7 +109,7 @@ Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri d
 
 ![image](https://user-images.githubusercontent.com/127454468/232956243-f7be77c5-9b46-4c78-96f2-82f4b554ed55.png)
 
-- 1.Tampilkan Produk Yang Tersedia
+1.Tampilkan Produk Yang Tersedia
 
 Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, setelah memilih menu, pelanggan dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
 
@@ -138,7 +138,7 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 ![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
 
-- 2.Shopping
+2. Beli Kue
 
 
 
@@ -157,9 +157,13 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 ![Screenshot 2023-04-19 110838](https://user-images.githubusercontent.com/127454468/232958687-ae40835b-d751-4c49-8eb8-7b92b79ce687.png)
 
-- 3.Exit
+3. Lihat Riwayat Pembelian
 
-Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `exit`.
+![Screenshot 2023-04-19 111031](https://user-images.githubusercontent.com/127454468/232990869-3c72f397-39be-41f5-90c0-1165b01313a6.png)
+
+4. Keluar
+
+Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `Keluar`.
 
 
 
@@ -176,7 +180,7 @@ Jika login berhasil, maka program akan memunculkan menu admin yang terdiri dari 
 
 ![Screenshot 2023-04-19 104307](https://user-images.githubusercontent.com/127454468/232959845-a4a9029e-66f0-47fa-a78e-02f1cb897f6c.png)
 
-1. Tampilkan Produk Yang Tersedia
+1. Tampilkan Produk
 
 Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-1`, setelah memilih menu, admin dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
 
@@ -206,7 +210,7 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 
 ![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
 
-2. Tambahkan Produk Baru ke dalam List
+2. Tambahkan Produk
 
 Untuk menambahkan produk baru maka admin dapat memilih `menu admin ke-2`, setelah memilih menu, admin akan diminta untuk menginput Nama Produk, Harga, Kategori Produk, Jenis Rasa Produk, dan Jumlah Stok.
 
@@ -221,7 +225,7 @@ Produk baru otomatis akan di urutkan di dalam list produk
 ```
 ![image](https://user-images.githubusercontent.com/127454468/232955008-2f683823-519c-4a44-810a-f7c8c53e4600.png)
 
-3. Hapus Produk Dari List
+3. Hapus Produk
 
 Untuk menghapus produk yang telah ada maka admin dapat memilih `menu admin ke-3`, setelah memilih menu, admin akan diminta untuk menginput nama produk yang ingin dihapus.
 
@@ -231,6 +235,7 @@ Tampilan jika produk berhasil dihapus
 ```
 ![image](https://user-images.githubusercontent.com/127454468/232955200-9e33177c-149a-40dd-8136-70457def4bc7.png)
 
+4. Edit Produk
 
 ![image](https://user-images.githubusercontent.com/127454468/232955474-b36a3b14-d7fb-454d-a118-9349e667a1fd.png)
 ![Screenshot 2023-04-19 105931](https://user-images.githubusercontent.com/127454468/232955843-f2c95d27-e960-40c9-a78f-9bb770128656.png)
@@ -243,14 +248,17 @@ Tampilan jika produk berhasil dihapus
 
 ![Screenshot 2023-04-19 144038](https://user-images.githubusercontent.com/127454468/232988373-57c9e7b5-3d13-4394-b4c1-39678581b7a8.png)
 
-4. Tampilkan History
+4. Tampilkan Riwayat
 
 Jika ingin melihat history produk maka admin dapat memilih `menu admin ke-4`, maka program akan menampilkan history produk yang telah ditambahkan dan dihapus.
 
 ![Screenshot 2023-04-19 110009](https://user-images.githubusercontent.com/127454468/232955777-c75e3cce-1b41-44a5-8db3-cba393324c90.png)
 
-5. Exit
+5. Keluar
 
-Jika admin telah selesai menggunakan program, maka admin dapat keluar program dengan memilih menu `exit`.
+Jika admin telah selesai menggunakan program, maka admin dapat keluar program dengan memilih menu `Keluar`. Menu ini akan mengembalikan admin ke Menu Awal'.
+
+#### Keluar
+Jika ingin keluar dari program maka admin dan pelanggan dapat memilih `menu awal ke-4` untuk dapat keluar dari program.
 
 ![image](https://user-images.githubusercontent.com/127454468/232956070-7fbfbca9-5888-493f-8fa8-af487896efd7.png)
