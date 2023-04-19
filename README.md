@@ -121,6 +121,21 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 - 2.Shopping
 
+
+
+
+
+![Screenshot 2023-04-19 110822](https://user-images.githubusercontent.com/127454468/232958223-03b7cc5d-07de-4c4c-8947-ae302b925954.png)
+
+
+![Screenshot 2023-04-19 110521](https://user-images.githubusercontent.com/127454468/232958175-557c64a4-4d1b-4280-8872-a8e2132bf749.png)
+
+
+![Screenshot 2023-04-19 110531](https://user-images.githubusercontent.com/127454468/232958142-a410ce66-45ed-4c23-99eb-e59550fdf836.png)
+
+
+![Screenshot 2023-04-19 111254](https://user-images.githubusercontent.com/127454468/232958039-301b70fe-1558-457a-98c3-ffaae6865cd9.png)
+
 - 3.Exit
 
 Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `exit`.
