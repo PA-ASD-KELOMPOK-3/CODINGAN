@@ -16,6 +16,9 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 
 ## ⚙️Structure
 
+### Database
+[MongoDB](https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=bing&utm_campaign=search_bs_pl_evergreen_atlas_core_prosp-brand_gic-null_apac-id_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=415204525&adgroup=1212761794897445&msclkid=510029f330dd1bc5c99a4dccbb44d6e5)
+
 ### Library
 
 > [PrettyTable](https://pypi.org/project/prettytable/),
@@ -158,7 +161,7 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `exit`.
 
-![Screenshot 2023-04-08 123524](https://user-images.githubusercontent.com/127454468/230704973-666bb43f-2d22-420c-a37e-4413c0afc513.png)
+
 
 ### 🥐**Admin**🥐
 #### Login Admin
@@ -234,6 +237,11 @@ Tampilan jika produk berhasil dihapus
 
 ![Screenshot 2023-04-19 105938](https://user-images.githubusercontent.com/127454468/232955815-64bebad8-4ff6-4ba6-a57c-01e6439a8e47.png)
 
+![Screenshot 2023-04-19 144114](https://user-images.githubusercontent.com/127454468/232988414-80fdcce9-9884-43a8-a805-02368cdce008.png)
+
+![Screenshot 2023-04-19 144143](https://user-images.githubusercontent.com/127454468/232988351-5dbf7fd4-6f30-4b00-8114-28078167a964.png)
+
+![Screenshot 2023-04-19 144038](https://user-images.githubusercontent.com/127454468/232988373-57c9e7b5-3d13-4394-b4c1-39678581b7a8.png)
 
 4. Tampilkan History
 
