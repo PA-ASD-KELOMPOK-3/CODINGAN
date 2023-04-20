@@ -140,32 +140,35 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 
 2. Beli Kue
 
-Jika ingin membeli produk, maka pelanggan dapat memilih `menu pelanggan ke-2`, setelah memilih menu, pelanggan akan diminta untuk memasukan produk yan.
-
-
+Jika ingin membeli produk, maka pelanggan dapat memilih `menu pelanggan ke-2`, setelah memilih menu, pelanggan akan diminta untuk memasukan produk yang ingin dibeli dan jumlah produk yang ingin dibeli.
 
 ![Screenshot 2023-04-19 110822](https://user-images.githubusercontent.com/127454468/232958223-03b7cc5d-07de-4c4c-8947-ae302b925954.png)
-
-
+```
+Selanjutnya, program akan memberikan rincian produk dan jumlah yang akan dibayarkan
+```
 ![Screenshot 2023-04-19 110521](https://user-images.githubusercontent.com/127454468/232958175-557c64a4-4d1b-4280-8872-a8e2132bf749.png)
-
-
+```
+Lalu, program akan menanyakan apakah pelanggan ingin lanjut atau membatalkan transaksi
+```
 ![Screenshot 2023-04-19 110531](https://user-images.githubusercontent.com/127454468/232958142-a410ce66-45ed-4c23-99eb-e59550fdf836.png)
-
-
+```
+Jika ingin melanjutkan ke pembayaran, pelanggan dapat memilih `y` dan program akan memberikan invoice pembelian
+```
 ![Screenshot 2023-04-19 111254](https://user-images.githubusercontent.com/127454468/232958039-301b70fe-1558-457a-98c3-ffaae6865cd9.png)
-
+```
+Jika ingin tidak ingin melanjutkan ke pembayaran, pelanggan dapat memilih `t` dan program akan membatalkan pembelian
+```
 ![Screenshot 2023-04-19 110838](https://user-images.githubusercontent.com/127454468/232958687-ae40835b-d751-4c49-8eb8-7b92b79ce687.png)
 
 3. Lihat Riwayat Pembelian
+
+Jika ingin melihat history pembelian maka pelanggan dapat memilih `menu pelanggan ke-4`, maka program akan menampilkan history produk yang pernah dibeli oleh pelanggan tersebut.
 
 ![Screenshot 2023-04-19 111031](https://user-images.githubusercontent.com/127454468/232990869-3c72f397-39be-41f5-90c0-1165b01313a6.png)
 
 4. Keluar
 
 Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `Keluar`.
-
-
 
 ### 🥐**Admin**🥐
 #### Login Admin
@@ -237,15 +240,28 @@ Tampilan jika produk berhasil dihapus
 
 4. Edit Produk
 
+Jika ingin mengedit produk yang telah ada maka admin dapat memilih `menu admin ke-4`, setelah memilih menu, admin akan diminta untuk memasukan nama produk yang ingin diubah lalu memilih apakah ingin mengubah stok atau harga produk.
+
 ![image](https://user-images.githubusercontent.com/127454468/232955474-b36a3b14-d7fb-454d-a118-9349e667a1fd.png)
+```
+Jika admin ingin mengubah stok
+```
 ![Screenshot 2023-04-19 105931](https://user-images.githubusercontent.com/127454468/232955843-f2c95d27-e960-40c9-a78f-9bb770128656.png)
-
+```
+Tampilan jika produk berhasil diubah
+```
 ![Screenshot 2023-04-19 105938](https://user-images.githubusercontent.com/127454468/232955815-64bebad8-4ff6-4ba6-a57c-01e6439a8e47.png)
-
+```
+Jika admin ingin mengubah harga
+```
 ![Screenshot 2023-04-19 144114](https://user-images.githubusercontent.com/127454468/232988414-80fdcce9-9884-43a8-a805-02368cdce008.png)
-
+```
+Tampilan produk yang telah diubah stok dan harganya
+```
 ![Screenshot 2023-04-19 144143](https://user-images.githubusercontent.com/127454468/232988351-5dbf7fd4-6f30-4b00-8114-28078167a964.png)
-
+```
+Tampilan jika produk yang di input tidak ditemukan
+```
 ![Screenshot 2023-04-19 144038](https://user-images.githubusercontent.com/127454468/232988373-57c9e7b5-3d13-4394-b4c1-39678581b7a8.png)
 
 4. Tampilkan Riwayat
@@ -256,7 +272,7 @@ Jika ingin melihat history produk maka admin dapat memilih `menu admin ke-4`, ma
 
 5. Keluar
 
-Jika admin telah selesai menggunakan program, maka admin dapat keluar program dengan memilih menu `Keluar`. Menu ini akan mengembalikan admin ke Menu Awal'.
+Jika admin telah selesai menggunakan program, maka admin dapat keluar program dengan memilih menu `Keluar`. Menu ini akan mengembalikan admin ke `Menu Awal`.
 
 #### Keluar
 Jika ingin keluar dari program maka admin dan pelanggan dapat memilih `menu awal ke-4` untuk dapat keluar dari program.
