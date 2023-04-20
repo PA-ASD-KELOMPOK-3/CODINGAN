@@ -58,30 +58,30 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 
 Linked List:
 
-shop: berisi deskripsi produk yang ditawarkan di toko.
-bakery: berisi semua fungsi dan fitur yang berkaitan dengan pengelolaan produk.
-add product: menambahkan produk baru ke dalam daftar produk.
-remove product: menghapus produk dari daftar produk.
-edit product: mengedit deskripsi produk yang ada di toko.
-show product: menampilkan semua produk yang tersedia di toko.
-show history: menampilkan riwayat transaksi atau pembelian yang dilakukan di toko.
-belanja: memungkinkan pengguna untuk memilih dan membeli produk dari toko/bakery.
-transaction history: menampilkan semua transaksi atau pembelian yang dilakukan oleh pengguna.
-search: mencari produk yang tersedia di toko/bakery berdasarkan nama produk.
+- shop: berisi deskripsi produk yang ditawarkan di toko.
+- bakery: berisi semua fungsi dan fitur yang berkaitan dengan pengelolaan produk.
+  - add product: menambahkan produk baru ke dalam daftar produk.
+  - remove product: menghapus produk dari daftar produk.
+  - edit product: mengedit deskripsi produk yang ada di toko.
+  - show product: menampilkan semua produk yang tersedia di toko.
+  - show history: menampilkan riwayat transaksi atau pembelian yang dilakukan di toko.
+  - belanja: memungkinkan pengguna untuk memilih dan membeli produk dari toko/bakery.
+  - transaction history: menampilkan semua transaksi atau pembelian yang dilakukan oleh pengguna.
+  - search: mencari produk yang tersedia di toko/bakery berdasarkan nama produk.
 
 Fungsi:
-def cleardelay: digunakan untuk membersihkan tampilan program dan menambahkan jeda dalam program.
-def delayclear: digunakan menambahkan jeda dalam kode dan membersihkan tampilan program.
-def sort nama: digunakan untuk mengurutkan produk berdasarkan nama.
-def sort harga: digunakan untuk mengurutkan produk berdasarkan harga.
-def sort kategori: digunakan untuk mengurutkan produk berdasarkan kategori atau jenis.
-def sort rasa: digunakan untuk mengurutkan produk berdasarkan rasa.
-def menu urut: digunakan untuk menampilkan menu pengurutan produk.
-def menu admin: digunakan untuk menampilkan menu pengelolaan produk bagi admin.
-def login admin: digunakan untuk proses login sebagai admin.
-def menu pelanggan: digunakan untuk menampilkan menu pembelian bagi pelanggan.
-def login user: digunakan untuk proses login sebagai pelanggan.
-def program: digunakan untuk menjalankan program aplikasi yang dibuat.
+- def cleardelay: digunakan untuk membersihkan tampilan program dan menambahkan jeda dalam program.
+- def delayclear: digunakan menambahkan jeda dalam kode dan membersihkan tampilan program.
+- def sort nama: digunakan untuk mengurutkan produk berdasarkan nama.
+- def sort harga: digunakan untuk mengurutkan produk berdasarkan harga.
+- def sort kategori: digunakan untuk mengurutkan produk berdasarkan kategori atau jenis.
+- def sort rasa: digunakan untuk mengurutkan produk berdasarkan rasa.
+- def menu urut: digunakan untuk menampilkan menu pengurutan produk.
+- def menu admin: digunakan untuk menampilkan menu pengelolaan produk bagi admin.
+- def login admin: digunakan untuk proses login sebagai admin.
+- def menu pelanggan: digunakan untuk menampilkan menu pembelian bagi pelanggan.
+- def login user: digunakan untuk proses login sebagai pelanggan.
+- def program: digunakan untuk menjalankan program aplikasi yang dibuat.
 
 ## 🍞Features🍞
 - Pembeli
