@@ -56,6 +56,18 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 
 #### Penjelasan
 
+Database:
+- Database MongoDB digunakan untuk menyimpan data dengan struktur dokumen.
+
+Library:
+- Library PrettyTable digunakan untuk membuat tabel yang mudah dibaca pada program. 
+- Library os digunakan untuk membersihkan layar.
+- Library time digunakan untuk mengakses waktu. 
+- Library getpass digunakan untuk menerima input password tanpa menampilkannya. 
+- Library math digunakan untuk melakukan operasi matematika.
+- Library sys digunakan untuk mengakses argumen baris perintah dan variabel sistem.
+- Library datetime digunakan untuk mengakses tanggal.
+
 Linked List:
 
 - shop: berisi deskripsi produk yang ditawarkan di toko.
