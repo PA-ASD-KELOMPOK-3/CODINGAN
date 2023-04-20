@@ -17,7 +17,7 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 ## ⚙️Structure
 
 ### Database
-[MongoDB](https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=bing&utm_campaign=search_bs_pl_evergreen_atlas_core_prosp-brand_gic-null_apac-id_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=415204525&adgroup=1212761794897445&msclkid=510029f330dd1bc5c99a4dccbb44d6e5)
+> [MongoDB](https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=bing&utm_campaign=search_bs_pl_evergreen_atlas_core_prosp-brand_gic-null_apac-id_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=415204525&adgroup=1212761794897445&msclkid=510029f330dd1bc5c99a4dccbb44d6e5)
 
 ### Library
 
@@ -29,28 +29,24 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 [sys](https://docs.python.org/3/library/sys.html),
 [datetime](https://docs.python.org/3/library/datetime.html)
 
-### Dict
-- admin
-- user biasa
-
 ### Linked List
 - shop
 - bakery
+  - add product
+  - remove product
+  - edit product
+  - show product
+  - show history
+  - belanja
+  - transaction history
+  - search
 
-**Fungsi dalam class bakery:**
-
-add product,
-remove product,
-edit product,
-show product,
-show history,
-add transaction,
-search,
-sort,
-ulang
-
-### - Fungsi
+### Fungsi
 - def cleardelay
+- def sort nama
+- def sort harga
+- def sort kategori
+- def sort rasa
 - def menu urut
 - def menu admin
 - def login admin
@@ -58,20 +54,52 @@ ulang
 - def login user
 - def program
 
+#### Penjelasan
+
+Linked List:
+
+shop: berisi deskripsi produk yang ditawarkan di toko.
+bakery: berisi semua fungsi dan fitur yang berkaitan dengan pengelolaan produk.
+add product: menambahkan produk baru ke dalam daftar produk.
+remove product: menghapus produk dari daftar produk.
+edit product: mengedit deskripsi produk yang ada di toko.
+show product: menampilkan semua produk yang tersedia di toko.
+show history: menampilkan riwayat transaksi atau pembelian yang dilakukan di toko.
+belanja: memungkinkan pengguna untuk memilih dan membeli produk dari toko/bakery.
+transaction history: menampilkan semua transaksi atau pembelian yang dilakukan oleh pengguna.
+search: mencari produk yang tersedia di toko/bakery berdasarkan nama produk.
+
+Fungsi:
+def cleardelay: digunakan untuk membersihkan tampilan program dan menambahkan jeda dalam program.
+def delayclear: digunakan menambahkan jeda dalam kode dan membersihkan tampilan program.
+def sort nama: digunakan untuk mengurutkan produk berdasarkan nama.
+def sort harga: digunakan untuk mengurutkan produk berdasarkan harga.
+def sort kategori: digunakan untuk mengurutkan produk berdasarkan kategori atau jenis.
+def sort rasa: digunakan untuk mengurutkan produk berdasarkan rasa.
+def menu urut: digunakan untuk menampilkan menu pengurutan produk.
+def menu admin: digunakan untuk menampilkan menu pengelolaan produk bagi admin.
+def login admin: digunakan untuk proses login sebagai admin.
+def menu pelanggan: digunakan untuk menampilkan menu pembelian bagi pelanggan.
+def login user: digunakan untuk proses login sebagai pelanggan.
+def program: digunakan untuk menjalankan program aplikasi yang dibuat.
+
 ## 🍞Features🍞
 - Pembeli
   - Registrasi Pelanggan
   - Login Pelanggan
-  - Show Produk
-  - Ambil Antrean
+  - Tampilkan Produk
+  - Beli Kue
+  - Lihat Riwayat Pembelian
   - Belanja
 
 - Admin
   - Login Admin
-  - Show Produk
-  - Tambah produk
-  - Hapus produk
-  - Tampilkan History
+  - Tampilkan Produk
+  - Tambahkan Produk
+  - Hapus Produk
+  - Edit Produk
+  - Tampilkan Riwayat
+  - Keluar
 
 ### Fungsionalitas
 - Pembeli dapat meregistrasi diri untuk mendapatkan akun untuk masuk ke dalam program.
@@ -137,6 +165,10 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 ##### Program menampilkan produk yang dicari
 
 ![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
+```
+Tampilan jika program tidak menemukan produk yang dicari
+```
+![image](https://user-images.githubusercontent.com/127454468/233255416-c4f77443-1577-4969-811c-22997812bcaa.png)
 
 2. Beli Kue
 
@@ -159,12 +191,20 @@ Jika ingin melanjutkan ke pembayaran, pelanggan dapat memilih `y` dan program ak
 Jika ingin tidak ingin melanjutkan ke pembayaran, pelanggan dapat memilih `t` dan program akan membatalkan pembelian
 ```
 ![Screenshot 2023-04-19 110838](https://user-images.githubusercontent.com/127454468/232958687-ae40835b-d751-4c49-8eb8-7b92b79ce687.png)
+```
+Tampilan jika jumlah stok tidak mencukupi
+```
+![image](https://user-images.githubusercontent.com/127454468/233255670-f7495170-b8c5-4d27-a69b-e50a567fb608.png)
 
 3. Lihat Riwayat Pembelian
 
 Jika ingin melihat history pembelian maka pelanggan dapat memilih `menu pelanggan ke-4`, maka program akan menampilkan history produk yang pernah dibeli oleh pelanggan tersebut.
 
 ![Screenshot 2023-04-19 111031](https://user-images.githubusercontent.com/127454468/232990869-3c72f397-39be-41f5-90c0-1165b01313a6.png)
+```
+Tampilan jika pelanggan belum pernah melakukan pembelian
+```
+![image](https://user-images.githubusercontent.com/127454468/233255262-01da49a1-99c8-4af8-ba8f-6f5d12ab698f.png)
 
 4. Keluar
 
@@ -218,7 +258,6 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 Untuk menambahkan produk baru maka admin dapat memilih `menu admin ke-2`, setelah memilih menu, admin akan diminta untuk menginput Nama Produk, Harga, Kategori Produk, Jenis Rasa Produk, dan Jumlah Stok.
 
 ![Screenshot 2023-04-19 105326](https://user-images.githubusercontent.com/127454468/232954849-2699bf8e-1706-47a8-887c-850a5d1628b1.png)
-
 ```
 Tampilan jika produk berhasil ditambahkan
 ```
