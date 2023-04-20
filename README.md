@@ -173,9 +173,9 @@ Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, se
 ##### - Jika ingin mencari produk
 
 ![Screenshot 2023-04-19 104918](https://user-images.githubusercontent.com/127454468/232954219-77203e39-1e68-49f7-978e-f5dc04edf80a.png)
-
-##### Program menampilkan produk yang dicari
-
+```
+Program menampilkan produk yang dicari
+```
 ![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
 ```
 Tampilan jika program tidak menemukan produk yang dicari
@@ -260,10 +260,14 @@ Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-
 ##### - Jika ingin mencari produk
 
 ![Screenshot 2023-04-19 104918](https://user-images.githubusercontent.com/127454468/232954219-77203e39-1e68-49f7-978e-f5dc04edf80a.png)
-
-##### Program menampilkan produk yang dicari
-
+```
+Program menampilkan produk yang dicari
+```
 ![image](https://user-images.githubusercontent.com/127454468/232954091-b506f574-2c9b-48ab-b61b-fcf3ac384e54.png)
+```
+Tampilan jika program tidak menemukan produk yang dicari
+```
+![image](https://user-images.githubusercontent.com/127454468/233255416-c4f77443-1577-4969-811c-22997812bcaa.png)
 
 2. Tambahkan Produk
 
