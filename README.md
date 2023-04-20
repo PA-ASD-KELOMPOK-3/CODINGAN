@@ -222,7 +222,7 @@ Tampilan jika pelanggan belum pernah melakukan pembelian
 
 4. Keluar
 
-Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `Keluar`.
+Jika pelanggan telah selesai berbelanja, maka pelanggan dapat keluar program dengan memilih menu `Keluar`. Menu ini akan mengembalikan pelanggan ke `Menu Awal`.
 
 ### 🥐**Admin**🥐
 #### Login Admin
