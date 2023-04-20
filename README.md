@@ -40,10 +40,12 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
   - belanja
   - transaction history
   - search
+    searching menggunakan jump search
 
 ### Fungsi
 - def cleardelay
 - def sort nama
+  sorting menggunakan merge sort
 - def sort harga
 - def sort kategori
 - def sort rasa
