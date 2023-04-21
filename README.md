@@ -129,7 +129,7 @@ Fungsi:
 
 #### Menu Awal
 
-Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilihan yaitu Login Admin, Login Pelanggan, Registrasi Pelanggan, dan Exit.
+Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilihan yaitu Login Admin, Login Pelanggan, Registrasi Pelanggan, dan Keluar.
 
 ![image](https://user-images.githubusercontent.com/127454468/232953396-cd507db7-d551-401a-9a55-c40fe4e44618.png)
 
