@@ -137,17 +137,29 @@ Pada awal program di run, program akan menampilkan menu awal yang berisi 4 pilih
 #### Registrasi Pelanggan
 
 Jika pelanggan belum memiliki akun, maka dapat memilih menu awal `opsi ke-3` untuk registrasi akun. Di menu registrasi, pelanggan akan diminta untuk memasukkan username dan password baru.
+
 ![Screenshot 2023-04-19 110721](https://user-images.githubusercontent.com/127454468/232958807-0ea18d5d-75dc-4620-90fe-58b076b5445a.png)
 
-Setelah registrasi maka program akan kembali ke menu awal dan pelanggan dapat memasukkan username dan password yang telah didaftarkan di menu login pelanggan.
+Setelah registrasi maka program akan kembali ke menu awal dan pelanggan dapat memasukkan username dan password yang telah didaftarkan di menu `login pelanggan`.
 ####  Login Pelanggan
 
 Di menu ini, pelanggan harus memilih menu awal `opsi ke-2` dan memasukkan username dan password untuk bisa masuk ke dalam program.
+
 ![Screenshot 2023-04-19 110733](https://user-images.githubusercontent.com/127454468/232958790-28e83f6c-c744-4365-a8a6-dcda75ccbb77.png)
+
+Jika username atau password yang dimasukan salah, maka login akan gagal dan program kembali ke `Menu Awal`.
+```
+Tampilan jika username salah
+```
+![image](https://user-images.githubusercontent.com/127454468/233548555-f143681c-aa7b-4db6-83a1-0a535576528f.png)
+```
+Tampilan jika password salah
+```
+![image](https://user-images.githubusercontent.com/127454468/233548604-8e03369e-ed35-4689-9599-6c419734d60b.png)
 
 - Menu Pelanggan
 
-Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri dari 3 pilihan, yaitu Tampilkan Produk Yang Tersedia, Shopping, dan Exit.
+Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri dari 3 pilihan, yaitu Tampilkan Produk, Beli Kue, Lihat Riwayat Pembelian, dan Keluar.
 
 ![image](https://user-images.githubusercontent.com/127454468/232956243-f7be77c5-9b46-4c78-96f2-82f4b554ed55.png)
 
@@ -186,7 +198,7 @@ Tampilan jika program tidak menemukan produk yang dicari
 
 2. Beli Kue
 
-Jika ingin membeli produk, maka pelanggan dapat memilih `menu pelanggan ke-2`, setelah memilih menu, pelanggan akan diminta untuk memasukan produk yang ingin dibeli dan jumlah produk yang ingin dibeli.
+Jika ingin membeli produk, maka pelanggan dapat memilih `menu pelanggan ke-2`, setelah memilih menu, pelanggan akan diminta untuk memasukan produk yang ingin dibeli dan jumlah produk yang ingin dibeli. Jumlah yang dibeli tidak boleh kosong atau berjumlah 0.
 
 ![Screenshot 2023-04-19 110822](https://user-images.githubusercontent.com/127454468/232958223-03b7cc5d-07de-4c4c-8947-ae302b925954.png)
 ```
@@ -209,6 +221,10 @@ Jika ingin tidak ingin melanjutkan ke pembayaran, pelanggan dapat memilih `t` da
 Tampilan jika jumlah stok tidak mencukupi
 ```
 ![image](https://user-images.githubusercontent.com/127454468/233255670-f7495170-b8c5-4d27-a69b-e50a567fb608.png)
+```
+Tampilan jika jumlah pembelian 0
+```
+![image](https://user-images.githubusercontent.com/127454468/233547904-276c12bb-9799-44ef-ba58-ae5158c5fdcc.png)
 ```
 Tampilan jika produk tidak ditemukan
 ```
@@ -237,9 +253,15 @@ Setelah program di run, admin harus memilih menu awal `opsi ke-1` lalu memasukka
 
 - Menu Admin
 
-Jika login berhasil, maka program akan memunculkan menu admin yang terdiri dari 6 pilihan, yaitu Tampilkan Produk Yang Tersedia, Tambahkan Produk Baru ke dalam List, Hapus Produk Dari List, Tampilkan History dan Exit.
+Jika login berhasil, maka program akan memunculkan menu admin yang terdiri dari 6 pilihan, yaitu Tampilkan Produk, Tambahkan Produk, Hapus Produk, Edit Produk, Tampilkan Riwayat, dan Keluar.
 
 ![Screenshot 2023-04-19 104307](https://user-images.githubusercontent.com/127454468/232959845-a4a9029e-66f0-47fa-a78e-02f1cb897f6c.png)
+
+Jika username atau password salah, maka login akan gagal dan program akan kembali ke menu awal.
+```
+Tampilan jika login gagal
+```
+![image](https://user-images.githubusercontent.com/127454468/233548314-7d64502b-ba58-4a80-9de8-dfc56b84a500.png)
 
 1. Tampilkan Produk
 
@@ -325,13 +347,13 @@ Tampilan jika produk yang di input tidak ditemukan
 ```
 ![Screenshot 2023-04-19 144038](https://user-images.githubusercontent.com/127454468/232988373-57c9e7b5-3d13-4394-b4c1-39678581b7a8.png)
 
-4. Tampilkan Riwayat
+5. Tampilkan Riwayat
 
-Jika ingin melihat history produk maka admin dapat memilih `menu admin ke-4`, maka program akan menampilkan history produk yang telah ditambahkan dan dihapus.
+Jika ingin melihat history produk maka admin dapat memilih `menu admin ke-4`, maka program akan menampilkan riwayat produk yang telah ditambahkan dan dihapus.
 
 ![Screenshot 2023-04-19 110009](https://user-images.githubusercontent.com/127454468/232955777-c75e3cce-1b41-44a5-8db3-cba393324c90.png)
 
-5. Keluar
+6. Keluar
 
 Jika admin telah selesai menggunakan program, maka admin dapat keluar program dengan memilih menu `Keluar`. Menu ini akan mengembalikan admin ke `Menu Awal`.
 
