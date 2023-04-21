@@ -195,6 +195,12 @@ class bakery:
                 print(40*"=")
                 input("Tekan Enter Untuk Lanjut...")
                 delayclear()
+            elif jumlah_beli < 1 :
+                print(40*"=")
+                print("Jumlah Kue Tidak Boleh Kosong")
+                print(40*"=")
+                input("Tekan Enter Untuk Lanjut...")
+                delayclear()
             else:
                 total_harga = current["price"] * jumlah_beli
                 cleardelay()
@@ -629,6 +635,7 @@ def loginadmin():
             cleardelay()
             print("Invalid Login")
             delayclear()
+            return
 
 def menupelanggan():
     print("=============================================")
@@ -652,8 +659,12 @@ def loginuser():
         result = pelanggan.find_one({"name": usn})
         if result is None:
             print("Nama Pengguna Tidak Terdaftar.")
+            delayclear()
+            return
         elif result["password"] != password:
             print("Kata Sandi Salah.")
+            delayclear()
+            return
         else:
             cleardelay()
             print("="*50)
