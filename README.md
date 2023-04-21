@@ -209,6 +209,10 @@ Jika ingin tidak ingin melanjutkan ke pembayaran, pelanggan dapat memilih `t` da
 Tampilan jika jumlah stok tidak mencukupi
 ```
 ![image](https://user-images.githubusercontent.com/127454468/233255670-f7495170-b8c5-4d27-a69b-e50a567fb608.png)
+```
+Tampilan jika produk tidak ditemukan
+```
+![image](https://user-images.githubusercontent.com/127454468/233546841-73a4d6ad-ddea-4ff3-9092-111303ffec76.png)
 
 3. Lihat Riwayat Pembelian
 
