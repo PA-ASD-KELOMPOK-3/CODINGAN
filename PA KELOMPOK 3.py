@@ -19,13 +19,7 @@ pelanggan = database["akun_pembeli"]
 history = database["history"]
 transaksi = database["transaksi"]
 
-#Ini function untuk memberikan delay sejenak 
-def cleardelay():
-    os.system("cls")
-    time.sleep(0.8)
-def delayclear():
-    time.sleep(0.8) 
-    os.system("cls")
+#CONTROLLER
 
 class shop:
     def __init__(self, name, price, category, flavour, stock):
@@ -498,6 +492,16 @@ def merge_sort_wrapper_rasa():
             table.add_row([z["name"], z["price"], z["category"], z["flavour"], z["stock"]])
         table.sortby = "Rasa"
         print(table)
+
+#VIEW
+
+#Function untuk memberikan delay sejenak 
+def cleardelay():
+    os.system("cls")
+    time.sleep(0.8)
+def delayclear():
+    time.sleep(0.8) 
+    os.system("cls")
 
 def menu_urut():
     print("=============================================")
