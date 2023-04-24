@@ -16,9 +16,6 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 
 ## ⚙️Structure
 
-### Database
-> [MongoDB](https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=bing&utm_campaign=search_bs_pl_evergreen_atlas_core_prosp-brand_gic-null_apac-id_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=415204525&adgroup=1212761794897445&msclkid=510029f330dd1bc5c99a4dccbb44d6e5)
-
 ### Library
 
 > [PrettyTable](https://pypi.org/project/prettytable/),
@@ -29,7 +26,15 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 [sys](https://docs.python.org/3/library/sys.html),
 [datetime](https://docs.python.org/3/library/datetime.html)
 
-### Linked List
+### Model:
+
+Database: [MongoDB](https://www.mongodb.com/cloud/atlas/lp/try4?utm_source=bing&utm_campaign=search_bs_pl_evergreen_atlas_core_prosp-brand_gic-null_apac-id_ps-all_desktop_eng_lead&utm_term=mongodb&utm_medium=cpc_paid_search&utm_ad=e&utm_ad_campaign_id=415204525&adgroup=1212761794897445&msclkid=510029f330dd1bc5c99a4dccbb44d6e5)
+
+Linked List: shop, bakery
+
+### Controller:
+
+Linked List:
 - shop
 - bakery
   - add product
@@ -41,14 +46,17 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
   - transaction history
   - search
     searching menggunakan jump search
-
-### Fungsi
-- def cleardelay
+Fungsi:
 - def sort nama
   sorting menggunakan merge sort
 - def sort harga
 - def sort kategori
 - def sort rasa
+
+### View:
+
+Fungsi:
+- def cleardelay
 - def menu urut
 - def menu admin
 - def login admin
@@ -57,6 +65,10 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 - def program
 
 #### Penjelasan
+
+- **Model**: Berisi komponen yang berkaitan dengan data seperti database dan linked list.
+- **Controller**: Berisi fungsi-fungsi yang mengontrol dan mengelola data, serta menjembatani antara model dan view.
+- **View**: Berisi fungsi-fungsi yang menampilkan output program kepada admin dan pelanggan.
 
 Database:
 - Database MongoDB digunakan untuk menyimpan data dengan struktur dokumen.
