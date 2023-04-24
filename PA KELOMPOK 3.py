@@ -198,8 +198,8 @@ class bakery:
             else:
                 total_harga = current["price"] * jumlah_beli
                 cleardelay()
-                print("="*30)
-                print("RINCIAN BELANJAAN".center(30))
+                print("="*40)
+                print("RINCIAN BELANJAAN".center(40))
                 print("="*40)
                 transaction = {"username": ncurrent["name"],
                                "name": current["name"],
