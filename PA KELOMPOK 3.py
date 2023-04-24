@@ -592,9 +592,7 @@ def loginadmin():
                             price = int(input("Input harga             : "))
                             if price > 1000000 or price <= 0:
                                 delayclear()
-                                print("="*70)
-                                print("Inputan Hr\arga Tidak Boleh Lebih Dari 1000000 dan Tidak Boleh Kosong".center(70))
-                                print("="*70)
+                                print("Inputan Harga Tidak Boleh Lebih Dari 1000000 dan Tidak Boleh Kosong!")
                                 input("Tekan Enter Untuk Lanjut...")
                             else:
                                 category = str.title(input("Input kategori produk   : "))
@@ -615,9 +613,7 @@ def loginadmin():
                                     else:
                                         stock = int(input("Input jumlah stok       : "))
                                         if stock > 100 or stock <= 0:
-                                            print("="*70)
-                                            print("Inputan Stok Tidak Boleh Lebih Dari 100 dan Tidak Boleh Kosong".center(70))
-                                            print("="*70)
+                                            print("Inputan Stok Tidak Boleh Lebih Dari 100 dan Tidak Boleh Kosong!")
                                             input("Tekan Enter Untuk Lanjut...")
                                         else:
                                             update = shop(name, price, category, flavour, stock)
