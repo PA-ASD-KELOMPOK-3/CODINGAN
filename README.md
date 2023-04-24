@@ -14,6 +14,23 @@ Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelol
 3. Mempermudah konsumen dalam proses melakukan pembelian.
 4. Menambah keterampilan dalam penerapan materi yang telah diajarkan selama praktikum berlangsung.
 
+## Instalasi
+
+1. Salin kode python berikut di code editor VS Code.
+> [Kode Toko Roti](https://github.com/PA-ASD-KELOMPOK-3/CODINGAN/blob/main/PA%20KELOMPOK%203.py) .
+
+2. Install extension MongoDb di terminal VS Code dengan perintah berikut.
+```
+pip install mongodb
+pip install python-dotenv
+```
+
+3. Unduh dan masukan file berikut di folder yang sama dengan kode yang telah di salin.
+
+4. Pastikan MongoDB sudah terhubung ke aplikasi.
+
+5. Jalankan Program
+
 ## ⚙️Structure
 
 ### Database
