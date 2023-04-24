@@ -1,5 +1,6 @@
 # Program Penjualan Toko Roti
 
+
 ## 🧶Disusun oleh
 ### KELOMPOK: 3 / A / 2022
   - M. Haykal Fajjar Aulia (2209116018)
@@ -220,7 +221,7 @@ Jika ingin membeli produk, maka pelanggan dapat memilih `menu pelanggan ke-2`, s
 ```
 Selanjutnya, program akan memberikan rincian produk dan jumlah yang akan dibayarkan
 ```
-![Screenshot 2023-04-19 110521](https://user-images.githubusercontent.com/127454468/232958175-557c64a4-4d1b-4280-8872-a8e2132bf749.png)
+![Screenshot 2023-04-24 212011](https://user-images.githubusercontent.com/126852536/234008975-9707a6f1-78b7-4aad-bbe8-3cfb1e29410d.png)
 ```
 Lalu, program akan menanyakan apakah pelanggan ingin lanjut atau membatalkan transaksi
 ```
