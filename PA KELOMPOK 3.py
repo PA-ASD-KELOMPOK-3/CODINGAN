@@ -591,20 +591,41 @@ def loginadmin():
                         elif check is None :
                             price = int(input("Input harga             : "))
                             if price > 1000000 or price <= 0:
-                                print("Inputan Stok Tidak Boleh Lebih Dari 100 dan Tidak Boleh Kosong")
+                                delayclear()
+                                print("="*70)
+                                print("Inputan Hr\arga Tidak Boleh Lebih Dari 1000000 dan Tidak Boleh Kosong".center(70))
+                                print("="*70)
+                                input("Tekan Enter Untuk Lanjut...")
                             else:
                                 category = str.title(input("Input kategori produk   : "))
-                                flavour = str.title(input("Input rasa produk       : "))
-                                stock = int(input("Input jumlah stok       : "))
-                                if stock > 100 or stock <= 0:
-                                    print("Inputan Stok Tidak Boleh Lebih Dari 100 dan Tidak Boleh Kosong")
+                                if category.isnumeric():
+                                    delayclear()
+                                    print("="*40)
+                                    print("Inputan Harus Berupa Huruf!".center(40))
+                                    print("="*40)
+                                    input("Tekan Enter Untuk Lanjut...")
                                 else:
-                                    update = shop(name, price, category, flavour, stock)
-                                    bakery().add_product(update)
-                                    cleardelay()
-                                    print("Produk Baru Berhasil Ditambahkan")
-                                    input("\n\nTekan Enter Untuk Lanjut...")
-                                    break
+                                    flavour = str.title(input("Input rasa produk       : "))
+                                    if flavour.isnumeric():
+                                        delayclear()
+                                        print("="*40)
+                                        print("Inputan Harus Berupa Huruf!".center(40))
+                                        print("="*40)
+                                        input("Tekan Enter Untuk Lanjut...")
+                                    else:
+                                        stock = int(input("Input jumlah stok       : "))
+                                        if stock > 100 or stock <= 0:
+                                            print("="*70)
+                                            print("Inputan Stok Tidak Boleh Lebih Dari 100 dan Tidak Boleh Kosong".center(70))
+                                            print("="*70)
+                                            input("Tekan Enter Untuk Lanjut...")
+                                        else:
+                                            update = shop(name, price, category, flavour, stock)
+                                            bakery().add_product(update)
+                                            cleardelay()
+                                            print("Produk Baru Berhasil Ditambahkan")
+                                            input("\n\nTekan Enter Untuk Lanjut...")
+                                            break
                         else :
                             print("")
                             
