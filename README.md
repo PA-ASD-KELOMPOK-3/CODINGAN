@@ -60,6 +60,7 @@ Fungsi:
 
 Fungsi:
 - def cleardelay
+- def delayclear
 - def menu urut
 - def menu admin
 - def login admin
