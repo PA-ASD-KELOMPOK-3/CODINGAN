@@ -180,6 +180,9 @@ Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri d
 
 ![image](https://user-images.githubusercontent.com/127454468/232956243-f7be77c5-9b46-4c78-96f2-82f4b554ed55.png)
 
+Untuk mengakses setiap menu, pelanggan akan diminta untuk menginputkan angka. Berikut tampilan jika salah menginputkan kode menu pelanggan
+![salah input menu pelanggan](https://user-images.githubusercontent.com/126852536/234038176-c8ac8411-a306-4f9b-870b-fd7e3e5a7010.png)
+
 1.Tampilkan Produk Yang Tersedia
 
 Jika ingin melihat produk maka pelanggan dapat memilih `menu pelanggan ke-1`, setelah memilih menu, pelanggan dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
@@ -327,6 +330,22 @@ Tampilan jika produk berhasil ditambahkan
 Produk baru otomatis akan di urutkan di dalam list produk
 ```
 ![image](https://user-images.githubusercontent.com/127454468/232955008-2f683823-519c-4a44-810a-f7c8c53e4600.png)
+```
+Tampilan jika kue yang ditambahkan sudah ada didalam menu
+```
+![kue udah ada](https://user-images.githubusercontent.com/126852536/234040567-c9ae4443-396b-4f9e-8fdf-b0ee57708077.png)
+```
+Tampilan jika harga kue yang ditambahkan lebih dari 1000000 atau kosong
+```
+![salah harga](https://user-images.githubusercontent.com/126852536/234041186-7b0061de-b3e7-4f97-bcdf-09fbba8e5510.png)
+```
+Tampilan jika stok kue yang ditambahkan lebih dari 100 atau kosong
+```
+![salah stok](https://user-images.githubusercontent.com/126852536/234041238-326bc8a2-458e-4930-9003-c02d363abf6d.png)
+```
+Tampilan jika inputan kategori dan rasa kue berupa angka
+```
+![harus huruf](https://user-images.githubusercontent.com/126852536/234041291-01a018e9-7ad5-4ae0-b5bd-30ddc85b130e.png)
 
 3. Hapus Produk
 
