@@ -7,16 +7,19 @@
   - Intan Melani Sukma (2209116028)
 
 ## 🎐Program Description
-Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelolaan toko roti. Program ini dapat mendata mulai dari pendataan stok hingga pendataan riwayat penjualan roti.
+Program ini merupakan program penjualan yang dibangun untuk mempermudah pengelolaan toko roti. Program ini dapat mendata mulai dari pendataan stok hingga pendataan riwayat penjualan roti. Program penjualan toko roti ini dibangun dengan menerapkan konsep MVC.
 - Adapun tujuan dari program ini yaitu:
 1. Memudahkan pelaku bisnis untuk melakukan pendataan.
 2. Memudahkan pelaku bisnis untuk mendata stok produk dan mencatat transaksi pembelian.
 3. Mempermudah konsumen dalam proses melakukan pembelian.
-4. Menambah keterampilan dalam penerapan materi yang telah diajarkan selama praktikum berlangsung.
+4. Memudahkan dalam pengembangan dan pemeliharaan kode dengan penerapan konsep MVC.
+5. Menambah keterampilan dalam penerapan materi yang telah diajarkan selama praktikum berlangsung.
 
 ## ⚙️Structure
 
-### Library
+Program Toko Roti dibangun dengan konsep MVC. Konsep ini membagi program menjadi tiga bagian yang terpisah sehingga memudahkan dalam pengembangan dan pemeliharaan kode.
+
+#### Library
 
 > [PrettyTable](https://pypi.org/project/prettytable/),
 [os](https://docs.python.org/3/library/os.html),
@@ -66,7 +69,7 @@ Fungsi:
 
 #### Penjelasan
 
-- **Model**: Berisi komponen yang berkaitan dengan data seperti database dan linked list.
+- **Model**: Berisi komponen yang berkaitan dengan data, yaitu database dan linked list.
 - **Controller**: Berisi fungsi-fungsi yang mengontrol dan mengelola data, serta menjembatani antara model dan view.
 - **View**: Berisi fungsi-fungsi yang menampilkan output program kepada admin dan pelanggan.
 
