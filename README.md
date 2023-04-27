@@ -157,6 +157,23 @@ Jika pelanggan belum memiliki akun, maka dapat memilih menu awal `opsi ke-3` unt
 
 ![Screenshot 2023-04-19 110721](https://user-images.githubusercontent.com/127454468/232958807-0ea18d5d-75dc-4620-90fe-58b076b5445a.png)
 
+Jika pelanggan memasukkan username yang sudah terdaftar
+
+![regis nama udah ada](https://user-images.githubusercontent.com/126852536/234757415-c40b9215-9b46-4d68-ba34-72409aeac9f6.png)
+
+Jika pelanggan masukkan username dengan menggunakan karakter
+
+![regis pake karakter](https://user-images.githubusercontent.com/126852536/234757560-3c11d7c2-c241-41c9-865a-c7ccd7f11e9d.png)
+
+Jika pelanggan memasukkan username atau sandi kosong
+
+![regis kosong](https://user-images.githubusercontent.com/126852536/234757677-d80ef1a3-2464-4be9-a594-b7f37609c4b0.png)
+
+Jika sandi yang dimasukkan bukan angka
+
+![regis sandi bukan angka](https://user-images.githubusercontent.com/126852536/234761019-94ee4734-73fc-454a-8c7d-5549bcbb5fc0.png)
+
+
 Setelah registrasi maka program akan kembali ke menu awal dan pelanggan dapat memasukkan username dan password yang telah didaftarkan di menu `login pelanggan`.
 ####  Login Pelanggan
 
@@ -181,6 +198,7 @@ Jika login berhasil, maka program akan memunculkan menu pelanggan yang terdiri d
 ![image](https://user-images.githubusercontent.com/127454468/232956243-f7be77c5-9b46-4c78-96f2-82f4b554ed55.png)
 
 Untuk mengakses setiap menu, pelanggan akan diminta untuk menginputkan angka. Berikut tampilan jika salah menginputkan kode menu pelanggan
+
 ![salah input menu pelanggan](https://user-images.githubusercontent.com/126852536/234038176-c8ac8411-a306-4f9b-870b-fd7e3e5a7010.png)
 
 1.Tampilkan Produk Yang Tersedia
@@ -283,6 +301,11 @@ Tampilan jika login gagal
 ```
 ![image](https://user-images.githubusercontent.com/127454468/233548314-7d64502b-ba58-4a80-9de8-dfc56b84a500.png)
 
+Untuk mengakses menu admin, admin akan diminta untuk memasukkan angka yang mewakili setiap opsi program. Jika admin salah memasukkan opsi program maka akan muncul tampilan
+
+![Screenshot 2023-04-27 115726](https://user-images.githubusercontent.com/126852536/234761772-912b91fd-de0c-44f0-adac-01bab5b01748.png)
+
+
 1. Tampilkan Produk
 
 Jika ingin melihat produk yang tersedia maka admin dapat memilih `menu admin ke-1`, setelah memilih menu, admin dapat memilih apakah ingin melihat menu yang diurutkan berdasarkan nama atau diurutkan berdasarkan harga.
@@ -356,10 +379,15 @@ Untuk menghapus produk yang telah ada maka admin dapat memilih `menu admin ke-3`
 Tampilan jika produk berhasil dihapus
 ```
 ![image](https://user-images.githubusercontent.com/127454468/232955200-9e33177c-149a-40dd-8136-70457def4bc7.png)
+```
+Tampilan jika produk tidak ada di dalam menu
+```
+![hapus produk gada](https://user-images.githubusercontent.com/126852536/234761893-0842bd49-e482-40e0-aa2c-67e942104ff3.png)
+
 
 4. Edit Produk
 
-Jika ingin mengedit produk yang telah ada maka admin dapat memilih `menu admin ke-4`, setelah memilih menu, admin akan diminta untuk memasukan nama produk yang ingin diubah lalu memilih apakah ingin mengubah stok atau harga produk.
+Jika ingin mengedit produk yang telah ada maka admin dapat memilih `menu admin ke-4`. Setelah memilih menu, admin akan diminta untuk memasukan nama produk yang ingin diubah lalu memilih apakah ingin mengubah stok atau harga produk.
 
 ![image](https://user-images.githubusercontent.com/127454468/232955474-b36a3b14-d7fb-454d-a118-9349e667a1fd.png)
 ```
@@ -371,9 +399,17 @@ Tampilan jika produk berhasil diubah
 ```
 ![Screenshot 2023-04-19 105938](https://user-images.githubusercontent.com/127454468/232955815-64bebad8-4ff6-4ba6-a57c-01e6439a8e47.png)
 ```
+Tampilan jika stok yang diubah lebih dari 100 atau kosong
+```
+![edit kelebihan stok](https://user-images.githubusercontent.com/126852536/234762054-8d21b502-d9e0-49ec-99b9-cce4a123acaa.png)
+```
 Jika admin ingin mengubah harga
 ```
 ![Screenshot 2023-04-19 144114](https://user-images.githubusercontent.com/127454468/232988414-80fdcce9-9884-43a8-a805-02368cdce008.png)
+```
+Tampilan jika harga yang diubah lebih dari 1000000 atau kosong
+```
+![edit harga kelebihan](https://user-images.githubusercontent.com/126852536/234762208-2c682bb1-f3d0-4a7a-8bce-3ece2a38956c.png)
 ```
 Tampilan produk yang telah diubah stok dan harganya
 ```
