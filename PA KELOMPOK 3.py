@@ -2,6 +2,7 @@ from prettytable import PrettyTable
 import os
 import time
 import getpass
+import sys
 import math
 import datetime
 from pymongo import MongoClient
@@ -76,10 +77,16 @@ class bakery:
                 "timestamp": datetime.datetime.now()
             }
             history.insert_one(history_data)
+            os.system("cls")
+            loading_animation()
+            os.system("cls")
             print(40*"=")
             print("Produk Berhasil Dihapus".center(40))
             print(40*"=")
         else:
+            os.system("cls")
+            loading_animation()
+            os.system("cls")
             print(40*"=")
             print("Produk Tidak Ditemukan".center(40))
             print(40*"=")
@@ -105,7 +112,9 @@ class bakery:
                         "timestamp": datetime.datetime.now()
                     }
                     history.insert_one(history_data)
-                    delayclear()
+                    os.system("cls")
+                    loading_animation()
+                    os.system("cls")
                     print(40*"=")
                     print("Produk Berhasil Diubah".center(40))
                     print(40*"=")
@@ -123,7 +132,9 @@ class bakery:
                         "timestamp": datetime.datetime.now()
                     }
                     history.insert_one(history_data)
-                    delayclear()
+                    os.system("cls")
+                    loading_animation()
+                    os.system("cls")
                     print(40*"=")
                     print("Produk Berhasil Diubah!".center(40))
                     print(40*"=")
@@ -227,13 +238,18 @@ class bakery:
                     print(f"   Jumlah           : {jumlah_beli}")
                     print(f"   Harga Satuan Kue : {harganya}")
                     transaksi.insert_one(transaction)
+                    os.system("cls")
+                    loading_animation()
+                    os.system("cls")
                     print("="*50)
                     print("<..><..> Transaksi Berhasil Dilakukan <..><..>".center(50))
                     print("="*50)
                     input("Tekan Enter Untuk Lanjut...")
                     delayclear()
                 else:
-                    delayclear()
+                    os.system("cls")
+                    loading_animation()
+                    os.system("cls")
                     print("="*50)
                     print("<..><..> Transaksi Dibatalkan <..><..>".center(50))
                     print("="*50)
@@ -245,16 +261,17 @@ class bakery:
         if user is None:
             print("Pengguna Tidak Ditemukan.")
             return
-        user_history = transaksi.find({"username": user["name"]})
-        if len(list(user_history)) == 0:
+        count = transaksi.count_documents({"username": usn})
+        if count == 0:
             cleardelay()
             print(70*"=")
-            print("Belum Ada Tiwayat Pembelian Yang Dilakukan Oleh Pengguna Ini".center(70))
+            print("Belum Ada Transaksi Yang Dilakukan Oleh Pengguna Ini".center(70))
             print(70*"=")
             input("Tekan Enter Untuk Lanjut...")
             delayclear()
         else:
-            for history_data in transaksi.find():
+            user_history = transaksi.find({"username": usn})
+            for history_data in user_history:
                 print(40*"=")
                 print("Nama Pembeli      :", history_data["username"])
                 print("Produk            :", history_data["name"])
@@ -298,7 +315,9 @@ class bakery:
         print("Cari Produk".center(40))
         print("="*40)
         nama = str.title(input("Masukkan nama produk: "))
-        delayclear()
+        os.system("cls")
+        loading_animation()
+        os.system("cls")
         result = self.jump_search(nama)
         if result is None:
             print(40*"=")
@@ -495,6 +514,19 @@ def merge_sort_wrapper_rasa():
 
 #VIEW
 
+#TAMPILAN LOADING
+def loading_animation(duration=2):
+    start_time = time.time()
+    animation = "|/-\\"
+    idx = 0
+    while time.time() - start_time < duration:
+        sys.stdout.write('\r' + "<><><><><>    Loading " + animation[idx % len(animation)] + "    <><><><><>")
+        sys.stdout.flush()
+        idx += 1
+        time.sleep(0.1)
+        sys.stdout.write('\033[K')  # untuk membersihkan line di bawah cursor
+
+
 #Function untuk memberikan delay sejenak 
 def cleardelay():
     os.system("cls")
@@ -523,12 +555,14 @@ def menuadmin():
     print("  2. Tambahkan Produk ")
     print("  3. Hapus Produk ")
     print("  4. Edit Produk")
-    print("  5. Tampilkan Riwayat")
+    print("  5. Tampilkan Riwayat Barang")
     print("  6. Keluar")
     print("=============================================")
 
 def loginadmin():
     while True :
+        os.system("cls")
+        loading_animation()
         os.system("cls")
         print(40*"=")
         print("LOGIN ADMIN".center(40))
@@ -549,28 +583,36 @@ def loginadmin():
                         menu_urut()
                         urut = int(input("\t\t>> Input menu pilihan [1-5]: "))
                         if urut == 1:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Nama")
                             delayclear()
                             merge_sort_wrapper_nama()
                             input("Tekan Enter Untuk Lanjut...")
                             break
                         elif urut == 2:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Harga")
                             delayclear()
                             merge_sort_wrapper_harga()
                             input("Tekan Enter Untuk Lanjut...")
                             break
                         elif urut == 3:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Kategori")
                             delayclear()
                             merge_sort_wrapper_kategori()
                             input("Tekan Enter Untuk Lanjut...")
                             break
                         elif urut == 4:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Rasa")
                             delayclear()
                             merge_sort_wrapper_rasa()
@@ -618,7 +660,9 @@ def loginadmin():
                                         else:
                                             update = shop(name, price, category, flavour, stock)
                                             bakery().add_product(update)
-                                            cleardelay()
+                                            os.system("cls")
+                                            loading_animation()
+                                            os.system("cls")
                                             print("Produk Baru Berhasil Ditambahkan")
                                             input("\n\nTekan Enter Untuk Lanjut...")
                                             break
@@ -641,7 +685,9 @@ def loginadmin():
                         input("Tekan Enter Untuk Lanjut...")
                         break
                     elif choice == 5:
-                        cleardelay()
+                        os.system("cls")
+                        loading_animation()
+                        os.system("cls")
                         bakery().show_history()
                         input("Tekan Enter Untuk Lanjut...")
                         break
@@ -650,7 +696,7 @@ def loginadmin():
                         return
                     else:
                         print("Pilihan Tidak Sesuai Mohon Coba Lagi")
-                        time.sleep(0.8)
+                        delayclear()
                         break
         else :
             cleardelay()
@@ -672,6 +718,8 @@ def menupelanggan():
 def loginuser():
     while True :
         os.system("cls")
+        loading_animation()
+        os.system("cls")
         print(40*"=")
         print("LOGIN AKUN".center(40))
         print(40*"=")
@@ -689,7 +737,7 @@ def loginuser():
         else:
             cleardelay()
             print("="*50)
-            print("Selamat datang".center(50))
+            print("Selamat datang",usn.center(50))
             print("="*50)
             delayclear()
             print("="*50)
@@ -698,6 +746,8 @@ def loginuser():
             delayclear()
             while True:
                     os.system("cls")
+                    loading_animation()
+                    os.system("cls")
                     menupelanggan()
                     choice = int(input("\t\t>> Input menu pilihan [1-4]: "))
                     if choice == 1:
@@ -705,28 +755,36 @@ def loginuser():
                         menu_urut()
                         urut = int(input(">> Input menu pilihan [1-5]: "))
                         if urut == 1:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Nama")
                             delayclear()
                             merge_sort_wrapper_nama()
                             input("Tekan Enter Untuk Lanjut...")
 
                         elif urut == 2:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Harga")
                             delayclear()
                             merge_sort_wrapper_harga()
                             input("Tekan Enter Untuk Lanjut...")
 
                         elif urut == 3:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Kategori")
                             delayclear()
                             merge_sort_wrapper_kategori()
                             input("Tekan Enter Untuk Lanjut...")
         
                         elif urut == 4:
-                            cleardelay()
+                            os.system("cls")
+                            loading_animation()
+                            os.system("cls")
                             print("Produk Telah Diurutkan Berdasarkan Rasa")
                             delayclear()
                             merge_sort_wrapper_rasa()
@@ -739,18 +797,22 @@ def loginuser():
                             print("Invalid!")
                             
                     elif choice == 2:
-                        cleardelay()
+                        os.system("cls")
+                        loading_animation()
+                        os.system("cls")
                         bakery().belanja(usn)
                     
                     elif choice == 3:
+                        os.system("cls")
+                        loading_animation()
+                        os.system("cls")
                         bakery().transaction_history(usn)
-                        
                     elif choice == 4:
                         delayclear()
                         return
                     else:
                         print("Pilihan Tidak Sesuai, Mohon Coba Lagi")
-                        time.sleep(0.8)
+                        delayclear()
 
 def program():
     while True :
@@ -770,6 +832,8 @@ def program():
             elif choice == 2:
                 loginuser()
             elif choice == 3:
+                os.system("cls")
+                loading_animation()
                 os.system("cls")
                 print(40*"=")
                 print("REGISTRASI AKUN".center(40))
