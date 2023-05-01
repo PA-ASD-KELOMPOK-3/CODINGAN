@@ -11,9 +11,7 @@ from dotenv import load_dotenv
 os.system("cls")
 
 load_dotenv()
-
 cluster = MongoClient(os.getenv("MONGO_URI"))
-
 database = cluster["PA_ASD_KEL3"]
 barang = database["data_barang"]
 pelanggan = database["akun_pembeli"]
@@ -21,7 +19,6 @@ history = database["history"]
 transaksi = database["transaksi"]
 
 #CONTROLLER
-
 class shop:
     def __init__(self, name, price, category, flavour, stock):
         self.name = name
@@ -44,11 +41,20 @@ class shop:
 class bakery:
     def __init__(self):
         self.head = None
-        #history sama dengan list kosong yang nantinya akan terisi
         self.history = []
         self.transactions = []
 
-    #function menambah produk
+        # Membuat linked list dari data di MongoDB
+        for item in barang.find():
+            cake = shop(item["name"], item["price"], item["category"], item["flavour"], item["stock"])
+            if not self.head:
+                self.head = cake
+            else:
+                current_shop = self.head
+                while current_shop.next:
+                    current_shop = current_shop.next
+                current_shop.next = cake
+
     def add_product(self, cake):
         new_shop = shop(cake.name, cake.price, cake.category, cake.flavour, cake.stock)
         if not self.head:
@@ -69,21 +75,43 @@ class bakery:
             "timestamp": datetime.datetime.now()
         }
         history.insert_one(history_data)
-        
-    #function menghapus produk
+
     def remove_product(self, name):
+        current_shop = self.head
+        prev_shop = None
+
+        while current_shop and current_shop.name != name:
+            prev_shop = current_shop
+            current_shop = current_shop.next
+
+        if current_shop is None:
+            os.system("cls")
+            loading_animation()
+            os.system("cls")
+            print(40*"=")
+            print("Produk Tidak Ditemukan".center(40))
+            print(40*"=")
+            return
+
         result = barang.delete_one({"name": name})
+
         if result.deleted_count == 1:
             history_data = {
                 "action": "remove",
                 "name": name,
-                "price": "-",
-                "category": "-",
-                "flavour": "-",
-                "stock": "-",
+                "price": current_shop.price,
+                "category": current_shop.category,
+                "flavour": current_shop.flavour,
+                "stock": current_shop.stock,
                 "timestamp": datetime.datetime.now()
             }
             history.insert_one(history_data)
+
+            if prev_shop is None:
+                self.head = current_shop.next
+            else:
+                prev_shop.next = current_shop.next
+
             os.system("cls")
             loading_animation()
             os.system("cls")
@@ -111,6 +139,12 @@ class bakery:
                 else:
                     result["price"] = new_value
                     barang.replace_one({"name": name}, result)
+                    current_shop = self.head
+                    while current_shop:
+                        if current_shop.name == name:
+                            current_shop.price = new_value
+                            break
+                        current_shop = current_shop.next
                     history_data = {
                         "action": "edit",
                         "name": name,
@@ -131,6 +165,12 @@ class bakery:
                 else:
                     result["stock"] = new_value
                     barang.replace_one({"name": name}, result)
+                    current_shop = self.head
+                    while current_shop:
+                        if current_shop.name == name:
+                            current_shop.stock = new_value
+                            break
+                        current_shop = current_shop.next
                     history_data = {
                         "action": "edit",
                         "name": name,
@@ -143,10 +183,8 @@ class bakery:
                     loading_animation()
                     os.system("cls")
                     print(40*"=")
-                    print("Produk Berhasil Diubah!".center(40))
+                    print("Produk Berhasil Diubah".center(40))
                     print(40*"=")
-            else:
-                print("Jenis Yang Dimasukkan Tidak Sesuai")
         else:
             os.system("cls")
             loading_animation()
@@ -525,7 +563,6 @@ def merge_sort_wrapper_rasa():
         print(table)
 
 #VIEW
-
 #TAMPILAN LOADING
 def loading_animation(duration=2):
     start_time = time.time()
@@ -537,7 +574,6 @@ def loading_animation(duration=2):
         idx += 1
         time.sleep(0.1)
         sys.stdout.write('\033[K')  # untuk membersihkan line di bawah cursor
-
 
 #Function untuk memberikan delay sejenak 
 def cleardelay():
