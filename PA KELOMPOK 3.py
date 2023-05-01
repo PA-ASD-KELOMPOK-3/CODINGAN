@@ -23,7 +23,7 @@ transaksi = database["transaksi"]
 #CONTROLLER
 
 class shop:
-    def _init_(self, name, price, category, flavour, stock):
+    def __init__(self, name, price, category, flavour, stock):
         self.name = name
         self.price = price
         self.category = category
@@ -42,7 +42,7 @@ class shop:
         }
 
 class bakery:
-    def _init_(self):
+    def __init__(self):
         self.head = None
         #history sama dengan list kosong yang nantinya akan terisi
         self.history = []
@@ -50,15 +50,8 @@ class bakery:
 
     #function menambah produk
     def add_product(self, cake):
-        new_shop = shop(cake.name, cake.price, cake.category, cake.flavour, cake.stock)
-        if not self.head:
-            self.head = new_shop
-        else:
-            current_shop = self.head
-            while current_shop.next:
-                current_shop = current_shop.next
-            current_shop.next = new_shop
-        result = barang.insert_one(cake.to_dict())
+        barang.insert_one(cake.to_dict())
+        result = barang.find_one({"name": cake.name})
         history_data = {
             "action": "add",
             "name": result["name"],
@@ -72,80 +65,31 @@ class bakery:
         
     #function menghapus produk
     def remove_product(self, name):
-        if not self.head:
+        result = barang.delete_one({"name": name})
+        if result.deleted_count == 1:
+            history_data = {
+                "action": "remove",
+                "name": name,
+                "price": "-",
+                "category": "-",
+                "flavour": "-",
+                "stock": "-",
+                "timestamp": datetime.datetime.now()
+            }
+            history.insert_one(history_data)
+            os.system("cls")
+            loading_animation()
+            os.system("cls")
+            print(40*"=")
+            print("Produk Berhasil Dihapus".center(40))
+            print(40*"=")
+        else:
             os.system("cls")
             loading_animation()
             os.system("cls")
             print(40*"=")
             print("Produk Tidak Ditemukan".center(40))
             print(40*"=")
-            return
-        
-        if self.head.name == name:
-            result = barang.delete_one({"name": name})
-            if result.deleted_count == 1:
-                history_data = {
-                    "action": "remove",
-                    "name": name,
-                    "price": "-",
-                    "category": "-",
-                    "flavour": "-",
-                    "stock": "-",
-                    "timestamp": datetime.datetime.now()
-                }
-                history.insert_one(history_data)
-                os.system("cls")
-                loading_animation()
-                os.system("cls")
-                print(40*"=")
-                print("Produk Berhasil Dihapus".center(40))
-                print(40*"=")
-            else:
-                os.system("cls")
-                loading_animation()
-                os.system("cls")
-                print(40*"=")
-                print("Produk Tidak Ditemukan".center(40))
-                print(40*"=")
-            self.head = self.head.next
-            return
-        
-        current_shop = self.head
-        while current_shop.next and current_shop.next.name != name :
-            if current_shop.next:
-                result = barang.delete_one({"name": name})
-                if result.deleted_count == 1:
-                    history_data = {
-                        "action": "remove",
-                        "name": name,
-                        "price": "-",
-                        "category": "-",
-                        "flavour": "-",
-                        "stock": "-",
-                        "timestamp": datetime.datetime.now()
-                    }
-                    history.insert_one(history_data)
-                    os.system("cls")
-                    loading_animation()
-                    os.system("cls")
-                    print(40*"=")
-                    print("Produk Berhasil Dihapus".center(40))
-                    print(40*"=")
-                else:
-                    os.system("cls")
-                    loading_animation()
-                    os.system("cls")
-                    print(40*"=")
-                    print("Produk Tidak Ditemukan".center(40))
-                    print(40*"=")
-                current_shop.next = current_shop.next.next
-            else:
-                os.system("cls")
-                loading_animation()
-                os.system("cls")
-                print(40*"=")
-                print("Produk Tidak Ditemukan".center(40))
-                print(40*"=")
 
     #function mengedit produk
     def edit_product(self, name):
@@ -197,12 +141,7 @@ class bakery:
             else:
                 print("Jenis Yang Dimasukkan Tidak Sesuai")
         else:
-            os.system("cls")
-            loading_animation()
-            os.system("cls")
-            print(40*"=")
-            print("Produk Tidak Ditemukan".center(40))
-            print(40*"=")
+            print("Produk Tidak Ditemukan\n\n")
                     
     #function menampilkan Produk
     def show_product(self):
