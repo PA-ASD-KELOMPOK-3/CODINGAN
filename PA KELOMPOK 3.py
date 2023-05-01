@@ -198,16 +198,19 @@ class bakery:
         table = PrettyTable()
         table.title = "Produk yang Tersedia"
         table.field_names = ["Nama Kue", "Harga", "Kategori", "Rasa", "Stok"]
+        current_shop = self.head
+        while current_shop:
+            table.add_row([current_shop.name, current_shop.price, current_shop.category, current_shop.flavour, current_shop.stock])
+            current_shop = current_shop.next
         hasil = barang.find()
         if len(list(hasil)) == 0:
             print("Produk Masih Kosong")
-        else :
-            hasil = barang.find()
+        else:
             for result in barang.find():
                 table.add_row([result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
             print(table)
 
-    #function menampilkan history
+    #function biasa untuk menampilkan history
     def show_history(self):
         table = PrettyTable()
         table.title = "History"
@@ -227,9 +230,7 @@ class bakery:
             print(table)
 
     def belanja(self, usn):
-        print("="*64)
-        print("Daftar Kue Yang Tersedia".center(64))
-        print("="*64)
+        print("="*65)
         bakery().show_product()
 
         nama_kue = str(input("Masukkan nama kue         : ")).strip().lower().title()
