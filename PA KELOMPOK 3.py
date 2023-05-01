@@ -50,15 +50,22 @@ class bakery:
 
     #function menambah produk
     def add_product(self, cake):
-        barang.insert_one(cake.to_dict())
-        result = barang.find_one({"name": cake.name})
+        new_shop = shop(cake.name, cake.price, cake.category, cake.flavour, cake.stock)
+        if not self.head:
+            self.head = new_shop
+        else:
+            current_shop = self.head
+            while current_shop.next:
+                current_shop = current_shop.next
+            current_shop.next = new_shop
+        result = barang.insert_one(cake.to_dict())
         history_data = {
             "action": "add",
-            "name": result["name"],
-            "price": result["price"],
-            "category": result["category"],
-            "flavour": result["flavour"],
-            "stock": result["stock"],
+            "name": cake.name,
+            "price": cake.price,
+            "category": cake.category,
+            "flavour": cake.flavour,
+            "stock": cake.stock,
             "timestamp": datetime.datetime.now()
         }
         history.insert_one(history_data)
@@ -141,7 +148,12 @@ class bakery:
             else:
                 print("Jenis Yang Dimasukkan Tidak Sesuai")
         else:
-            print("Produk Tidak Ditemukan\n\n")
+            os.system("cls")
+            loading_animation()
+            os.system("cls")
+            print(40*"=")
+            print("Produk Tidak Ditemukan".center(40))
+            print(40*"=")
                     
     #function menampilkan Produk
     def show_product(self):
