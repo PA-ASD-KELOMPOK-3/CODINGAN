@@ -289,6 +289,8 @@ class bakery:
                     print(f"   Jumlah           : {jumlah_beli}")
                     print(f"   Harga Satuan Kue : {harganya}")
                     transaksi.insert_one(transaction)
+                    print("="*40)
+                    input("Tekan Enter Untuk Lanjut...")
                     os.system("cls")
                     loading_animation()
                     os.system("cls")
