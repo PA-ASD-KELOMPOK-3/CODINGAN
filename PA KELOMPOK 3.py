@@ -310,7 +310,7 @@ class bakery:
         os.system("cls")
         user = pelanggan.find_one({"name": usn})
         if user is None:
-            print("Pengguna Tidak Ditemukan.")
+            print("Pengguna Tidak Ditemukan")
             return
         count = transaksi.count_documents({"username": usn})
         if count == 0:
@@ -897,10 +897,10 @@ def program():
                     print("Nama Pengguna Sudah Terdaftar")
                     delayclear()
                 elif not regisUser.isalnum():
-                    print("Nama Pengguna Hanya Boleh Terdiri Dari Huruf dan Angka.")
+                    print("Nama Pengguna Hanya Boleh Terdiri Dari Huruf dan Angka")
                     delayclear()
                 elif not regisPass.isnumeric():
-                    print("Kata Sandi Hanya Boleh Terdiri Dari Angka.")
+                    print("Kata Sandi Hanya Boleh Terdiri Dari Angka")
                     delayclear()
                 else:
                     user_data = {
