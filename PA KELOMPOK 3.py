@@ -202,13 +202,10 @@ class bakery:
         while current_shop:
             table.add_row([current_shop.name, current_shop.price, current_shop.category, current_shop.flavour, current_shop.stock])
             current_shop = current_shop.next
-        hasil = barang.find()
-        if len(list(hasil)) == 0:
-            print("Produk Masih Kosong")
-        else:
-            for result in barang.find():
-                table.add_row([result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
-            print(table)
+        result = barang.find()
+        if result in barang.find():
+            table.add_row([result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
+        print(table)
 
     #function biasa untuk menampilkan history
     def show_history(self):
