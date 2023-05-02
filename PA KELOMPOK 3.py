@@ -226,7 +226,10 @@ class bakery:
                 elif result["action"] == "remove":
                     table.add_row(["Produk dihapus", result["name"], result["price"], result["category"], result["flavour"], result["stock"]])
                 elif result["action"] == "edit":
-                    table.add_row(["Produk diubah (" + result["field_name"] + ")", result["name"], result["new_value"], "-", "-", "-"])
+                    if result["field_name"] == "harga":
+                        table.add_row(["Produk diubah (harga)", result["name"], result["new_value"], "-", "-", "-"]) 
+                    elif result["field_name"] == "stok":
+                        table.add_row(["Produk diubah (stok)", result["name"], "-", "-", "-", result["new_value"]])
             print(table)
 
     def belanja(self, usn):
